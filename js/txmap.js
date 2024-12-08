@@ -3,7 +3,7 @@ $.ajax({
     type: 'get',
     url: 'https://apis.map.qq.com/ws/location/v1/ip',
     data: {
-        key: 'IF7BZ-LM6LZ-SUEX5-7NIWL-OPJ5Z-MEBPR',
+        key: '7G7BZ-2UICZ-JVKXN-ZL3GJ-OQXXF-EVFJ3',
         output: 'jsonp',
     },
     dataType: 'jsonp',
