@@ -1,0 +1,1914 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>HTML基础知识 | 宇仔的小破站</title><meta name="author" content="宇仔"><meta name="copyright" content="宇仔"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="HTML基础知识1、HTML 简介1.1、什么是 HTML?HTML 是用来描述网页地一种语言。  HTML 指的是超文本标记语言（Hyper Text Markup Language） HTML 不是一种编程语言，而是一种标记语言（markup language） 标记语言是一套标记标签（markup tag） HTML 使用标记标签来描述网页  1.2、HTML 标签HTML 标记标签通常被称">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML基础知识">
+<meta property="og:url" content="http://192.168.43.131/2024/11/24/HTML%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="宇仔的小破站">
+<meta property="og:description" content="HTML基础知识1、HTML 简介1.1、什么是 HTML?HTML 是用来描述网页地一种语言。  HTML 指的是超文本标记语言（Hyper Text Markup Language） HTML 不是一种编程语言，而是一种标记语言（markup language） 标记语言是一套标记标签（markup tag） HTML 使用标记标签来描述网页  1.2、HTML 标签HTML 标记标签通常被称">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.picgo.net/2024/12/07/169_1_e78c8d63-2523-4fdd-b6d7-8f51115119cc5e21607d0201853b.png">
+<meta property="article:published_time" content="2024-11-24T11:47:12.000Z">
+<meta property="article:modified_time" content="2024-11-24T11:47:12.000Z">
+<meta property="article:author" content="宇仔">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.picgo.net/2024/12/07/169_1_e78c8d63-2523-4fdd-b6d7-8f51115119cc5e21607d0201853b.png"><link rel="shortcut icon" href="https://img.picgo.net/2024/12/07/08ef53c150f276baea908621b9ae5ff6f990343b25ce8b76.jpg"><link rel="canonical" href="http://192.168.43.131/2024/11/24/HTML%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html"><link rel="preconnect" href="//cdnjs.cloudflare.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdnjs.cloudflare.com/ajax/libs/egjs-infinitegrid/4.11.1/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HTML基础知识',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-24 19:47:12'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/progress_bar.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/readPercent.css"><link rel="stylesheet" href="https://cdn1.tianli0.top/npm/element-ui@2.15.6/packages/theme-chalk/lib/index.css"><link rel="stylesheet" href="/css/universe.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">26</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-zhuye1"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw iconfont icon-guidang"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw iconfont icon-biaoqian"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont icon-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw iconfont icon-youlian"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw iconfont icon-liuyanmoban"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-guanyu1"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img.picgo.net/2024/12/07/169_1_e78c8d63-2523-4fdd-b6d7-8f51115119cc5e21607d0201853b.png')"><nav id="nav"><span id="blog-info"><a href="/" title="宇仔的小破站"><span class="site-name">宇仔的小破站</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="iconfont icon-a-044_sousuo fa-fw"></i><!-- span=' '+_p('search.title')--></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-zhuye1"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw iconfont icon-guidang"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw iconfont icon-biaoqian"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont icon-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw iconfont icon-youlian"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw iconfont icon-liuyanmoban"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-guanyu1"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="iconfont icon-caidan fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HTML基础知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-24T11:47:12.000Z" title="发表于 2024-11-24 19:47:12">2024-11-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-24T11:47:12.000Z" title="更新于 2024-11-24 19:47:12">2024-11-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/HTML%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">HTML基础知识</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">11.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>48分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="HTML基础知识"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2024/11/24/HTML%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="HTML基础知识"><a href="#HTML基础知识" class="headerlink" title="HTML基础知识"></a>HTML基础知识</h1><h4 id="1、HTML-简介"><a href="#1、HTML-简介" class="headerlink" title="1、HTML 简介"></a>1、HTML 简介</h4><h5 id="1-1、什么是-HTML"><a href="#1-1、什么是-HTML" class="headerlink" title="1.1、什么是 HTML?"></a>1.1、什么是 HTML?</h5><p>HTML 是用来描述网页地一种语言。</p>
+<ul>
+<li>HTML 指的是<span style="text-decoration:underline;">超文本标记语言（Hyper Text Markup Language）</span></li>
+<li>HTML 不是一种编程语言，而是<span style="color:#CC0000;">一种标记语言（markup language）</span></li>
+<li>标记语言是<span style="color:#6666FF;">一套标记标签（markup tag）</span></li>
+<li>HTML 使用标记标签来描述网页</li>
+</ul>
+<h5 id="1-2、HTML-标签"><a href="#1-2、HTML-标签" class="headerlink" title="1.2、HTML 标签"></a>1.2、HTML 标签</h5><p>HTML 标记标签通常被称为 HTML 标签（HTML tag）。</p>
+<ul>
+<li>HTML 标签是由<strong>尖括号</strong>包围地关键词，比如<code>&lt;html&gt;</code></li>
+<li>HTML 标签通常是成对出现地，比如<code>&lt;body&gt;&lt;/body&gt;</code></li>
+<li>标签对中地第一个标签是开始标签，第二个标签是结束标签</li>
+<li>开始和结束标签也被称为开放标签和闭合标签</li>
+</ul>
+<h5 id="1-3、HTML-文档-网页"><a href="#1-3、HTML-文档-网页" class="headerlink" title="1.3、HTML 文档 = 网页"></a>1.3、HTML 文档 = 网页</h5><ul>
+<li>HTML 文档描述网页</li>
+<li>HTML 文档包含 HTML 标题和纯文本</li>
+<li>HTML 文档也被称为网页</li>
+</ul>
+<p>Web 浏览器地作用是读取 HTML 文档，并以网页地形式显示出它们。浏览器不会显示 HTML 标签，而是使用标签来解释页面的内容。</p>
+<h4 id="2、HTML-基础功能标签"><a href="#2、HTML-基础功能标签" class="headerlink" title="2、HTML 基础功能标签"></a>2、HTML 基础功能标签</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;!DOCTYPE&gt;</code></td>
+<td>定义文档类型</td>
+</tr>
+<tr>
+<td><code>&lt;html&gt;</code></td>
+<td>HTML 根元素，定义 HTML 文档</td>
+</tr>
+<tr>
+<td><code>&lt;head&gt;</code></td>
+<td>定义关于文档的元信息</td>
+</tr>
+<tr>
+<td><code>&lt;title&gt;</code></td>
+<td>定义文档标题</td>
+</tr>
+<tr>
+<td><code>&lt;body&gt;</code></td>
+<td>定义文档主体</td>
+</tr>
+<tr>
+<td><code>h1~h6</code></td>
+<td>定义 HTML 标题</td>
+</tr>
+<tr>
+<td><code>&lt;p&gt;</code></td>
+<td>定义段落</td>
+</tr>
+<tr>
+<td><code>&lt;br</code></td>
+<td>定义简单的折行</td>
+</tr>
+<tr>
+<td><code>hr</code></td>
+<td>定义水平线</td>
+</tr>
+<tr>
+<td><code>&lt;!--...--&gt;</code></td>
+<td>定义注释</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="2-1、-lt-DOCTYPE-gt-定义和用法"><a href="#2-1、-lt-DOCTYPE-gt-定义和用法" class="headerlink" title="2.1、&lt;!DOCTYPE&gt;定义和用法"></a>2.1、<code>&lt;!DOCTYPE&gt;</code>定义和用法</h5><p><code>&lt;!DOCTYPE&gt;</code>声明必须是 HTML 文档的第一行，位于 html 标签之前。</p>
+<p><code>&lt;!DOCTYPE&gt;</code>声明不是 HTML 标签；它是指示 web 浏览器使用哪个 HTML 版本进行编写的指令。</p>
+<p>在 HTML 4.0.1 中，<code>&lt;!DOCTYPE&gt;</code>声明引用 DTD，因为 HTML 4.0.1 基于 SGML。DTD 规定了标记语言的规则，这样浏览器才能正确的呈现内容。</p>
+<p>HTML5 不基于 SGML，所以不需要引用 DTD。</p>
+<p>在 HTML5 中，<code>&lt;!DOCTYPE&gt;</code>声明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h6 id="2-1-1、HTML-4-0-1-Strict"><a href="#2-1-1、HTML-4-0-1-Strict" class="headerlink" title="2.1.1、HTML 4.0.1 Strict"></a>2.1.1、HTML 4.0.1 Strict</h6><p>该 DTD 包含所有 HTML 元素和属性，但不包括展示性和启用的元素（比如 font）。不允许框架集（Framesets）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0.1//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h6 id="2-1-2、HTML-4-0-1-Transitional"><a href="#2-1-2、HTML-4-0-1-Transitional" class="headerlink" title="2.1.2、HTML 4.0.1 Transitional"></a>2.1.2、HTML 4.0.1 Transitional</h6><p>该 DTD 包含所有 HTML 元素和属性，包括展示性和弃用的元素（比如 font）。不允许框架集（Framesets）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0.1 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h6 id="2-1-3、HTML-4-0-1-Frameset"><a href="#2-1-3、HTML-4-0-1-Frameset" class="headerlink" title="2.1.3、HTML 4.0.1 Frameset"></a>2.1.3、HTML 4.0.1 Frameset</h6><p>该 DTD 等同于 HTML 4.0.1 Transitional，但允许框架集内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0.1 Frameset//EN&quot; &quot;http://www.w3.org/TR/html4/frameset.dtd&quot;&gt;</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h6 id="2-1-4、XHTML-1-0-Strict"><a href="#2-1-4、XHTML-1-0-Strict" class="headerlink" title="2.1.4、XHTML 1.0 Strict"></a>2.1.4、XHTML 1.0 Strict</h6><p>该 DTD 包含所有 HTML 元素和属性，但不包括展示性和启用的元素（比如 font）。不允许框架集（Framesets）。必须以格式正确的 XML 来编写标记。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h6 id="2-1-5、XHTML-1-0-Transitional"><a href="#2-1-5、XHTML-1-0-Transitional" class="headerlink" title="2.1.5、XHTML 1.0 Transitional"></a>2.1.5、XHTML 1.0 Transitional</h6><p>该 DTD 包含所有 HTML 元素和属性，包含展示性和弃用的元素（比如 font）。不允许框架集（Framesets）。必须以格式正确的 XML 来编写标记。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h6 id="2-1-6、XHTML-1-0-Frameset"><a href="#2-1-6、XHTML-1-0-Frameset" class="headerlink" title="2.1.6、XHTML 1.0 Frameset"></a>2.1.6、XHTML 1.0 Frameset</h6><p>该 DTD 等同于 XHTML 1.0 Transitional，但允许框架集内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&quot;&gt;</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h6 id="2-1-7、XHTML-1-1"><a href="#2-1-7、XHTML-1-1" class="headerlink" title="2.1.7、XHTML 1.1"></a>2.1.7、XHTML 1.1</h6><p>该 DTD 等用于 XHTML 1.0 Strict，但允许添加模型。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C/DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<p><strong>基本标签的使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 文档类型 --&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!-- 文档根标签 --&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">  &lt;!-- 文档元信息 --&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;!-- 文档编码 --&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">    &lt;!-- 文档标题 --&gt;</span><br><span class="line">    &lt;title&gt;基础标签使用&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;!-- 文档的主体 --&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;!-- 一级标题 --&gt;</span><br><span class="line">    &lt;h1&gt;古诗歌&lt;/h1&gt;</span><br><span class="line">    &lt;!-- 定义水平线 --&gt;</span><br><span class="line">    &lt;hr /&gt;</span><br><span class="line">    &lt;!-- 二级标题 --&gt;</span><br><span class="line">    &lt;h2&gt;《春晓》&lt;/h2&gt;</span><br><span class="line">    &lt;!-- 段落 --&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;!-- 换行符br --&gt;</span><br><span class="line">      春眠不觉晓，&lt;br /&gt;</span><br><span class="line">      处处闻啼鸟。&lt;br /&gt;</span><br><span class="line">      夜来风雨声，&lt;br /&gt;</span><br><span class="line">      花落知多少。</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;!-- 定义水平线 --&gt;</span><br><span class="line">    &lt;hr /&gt;</span><br><span class="line">    &lt;!-- 二级标题 --&gt;</span><br><span class="line">    &lt;h2&gt;《上李邕》&lt;/h2&gt;</span><br><span class="line">    &lt;!-- 段落 --&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">       &lt;!-- 换行符br --&gt;</span><br><span class="line">      大鹏一日同风起，扶摇直上九万里。&lt;br /&gt;</span><br><span class="line">      假令风歇时下来，犹能簸却沧溟水。&lt;br /&gt;</span><br><span class="line">      世人见我恒殊调，闻余大言皆冷笑。&lt;br /&gt;</span><br><span class="line">      宣父犹能畏后生，丈夫未可轻年少。</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">1234567891011121314151617181920212223242526272829303132333435363738394041</span><br></pre></td></tr></table></figure>
+<h4 id="3、HTML-格式化文本标签"><a href="#3、HTML-格式化文本标签" class="headerlink" title="3、HTML 格式化文本标签"></a>3、HTML 格式化文本标签</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abbr</td>
+<td>定义缩写</td>
+</tr>
+<tr>
+<td>address</td>
+<td>定义文档作者或拥有着的联系信息</td>
+</tr>
+<tr>
+<td>b</td>
+<td>定义粗体文本</td>
+</tr>
+<tr>
+<td>bdi</td>
+<td>定义文本的文本方向，使其脱离其周围文本的方向设置</td>
+</tr>
+<tr>
+<td>bdo</td>
+<td>定义文字方向</td>
+</tr>
+<tr>
+<td>blockquote</td>
+<td>定义长的引用</td>
+</tr>
+<tr>
+<td>cite</td>
+<td>定义引用</td>
+</tr>
+<tr>
+<td>code</td>
+<td>定义计算机代码文本</td>
+</tr>
+<tr>
+<td>del</td>
+<td>定义被删除文本</td>
+</tr>
+<tr>
+<td>dfn</td>
+<td>定义项目</td>
+</tr>
+<tr>
+<td>em</td>
+<td>强调文本</td>
+</tr>
+<tr>
+<td>i</td>
+<td>定义斜体文本</td>
+</tr>
+<tr>
+<td>ins</td>
+<td>定义被插入文本</td>
+</tr>
+<tr>
+<td>kbd</td>
+<td>定义键盘文本</td>
+</tr>
+<tr>
+<td>mark</td>
+<td>定义有记号的文本</td>
+</tr>
+<tr>
+<td>meter</td>
+<td>定义预定义范围内的度量</td>
+</tr>
+<tr>
+<td>pre</td>
+<td>定义预格式文本</td>
+</tr>
+<tr>
+<td>progress</td>
+<td>定义任何类型的任务的进度</td>
+</tr>
+<tr>
+<td>q</td>
+<td>定义短的引用</td>
+</tr>
+<tr>
+<td>rp</td>
+<td>定义若浏览器不支持 ruby 元素显示的内容</td>
+</tr>
+<tr>
+<td>rt</td>
+<td>定义 ruby 注释的解释</td>
+</tr>
+<tr>
+<td>ruby</td>
+<td>定义 ruby 注释</td>
+</tr>
+<tr>
+<td>s</td>
+<td>定义加删除线的文本</td>
+</tr>
+<tr>
+<td>samp</td>
+<td>定义计算机代码样本</td>
+</tr>
+<tr>
+<td>small</td>
+<td>定义小号文本</td>
+</tr>
+<tr>
+<td>strong</td>
+<td>定义语气更为强烈的强调文本</td>
+</tr>
+<tr>
+<td>sup</td>
+<td>定义上标文本</td>
+</tr>
+<tr>
+<td>sub</td>
+<td>定义下标文本</td>
+</tr>
+<tr>
+<td>template</td>
+<td>定义用作容纳页面加载时隐藏内容的容器</td>
+</tr>
+<tr>
+<td>time</td>
+<td>定义日期/时间</td>
+</tr>
+<tr>
+<td>u</td>
+<td>定义下划线文本</td>
+</tr>
+<tr>
+<td>var</td>
+<td>定义文本的变量部分</td>
+</tr>
+<tr>
+<td>wbr</td>
+<td>定义可能的换行符</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>文本格式化标签基本使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">    &lt;title&gt;文本格式化标签&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;!-- abbr 定义缩写 --&gt;</span><br><span class="line">    &lt;abbr title=&quot;People&#x27;s Republic of China&quot;&gt;PRC&lt;/abbr&gt;</span><br><span class="line">    &lt;!-- address 定义文档作者或拥有者的联系信息，块级元素 --&gt;</span><br><span class="line">    &lt;address&gt;</span><br><span class="line">      &lt;a href=&quot;mailto:foo@example.com&quot;&gt;foo@example.com&lt;/a&gt;</span><br><span class="line">    &lt;/address&gt;</span><br><span class="line">    &lt;!-- b 定义粗体文本 --&gt;</span><br><span class="line">    &lt;b&gt;这是粗体文本&lt;/b&gt;&lt;br /&gt;</span><br><span class="line">    &lt;!-- bdi 定义文本的文本方向 --&gt;</span><br><span class="line">    &lt;bdi dir=&quot;rtl&quot;&gt;床前明月光，疑是地上霜。&lt;/bdi&gt;&lt;br /&gt;</span><br><span class="line">    &lt;!-- bdo 定义文字方向 --&gt;</span><br><span class="line">    &lt;bdo dir=&quot;rtl&quot;&gt;床前明月光，疑是地上霜。&lt;/bdo&gt;</span><br><span class="line">    &lt;!-- blockquote 定义块引用，块级元素 --&gt;</span><br><span class="line">    &lt;blockquote&gt;</span><br><span class="line">      This is a long quotation. This is a long quotation. This is a long</span><br><span class="line">      quotation. This is a long quotation. This is a long quotation.</span><br><span class="line">    &lt;/blockquote&gt;</span><br><span class="line">    &lt;!-- cite 定义引用，比如书籍或杂志的标题 --&gt;</span><br><span class="line">    &lt;p&gt;更多资料请看&lt;cite&gt;维基百科&lt;/cite&gt;。&lt;/p&gt;</span><br><span class="line">    &lt;!-- code 定义计算机代码 --&gt;</span><br><span class="line">    &lt;code&gt;alert()&lt;/code&gt;的作用是让网页弹出一个提示框。&lt;br /&gt;</span><br><span class="line">    &lt;!-- del 定义本删除的文本 --&gt;</span><br><span class="line">    &lt;del&gt;定义被删除的文本&lt;/del&gt;</span><br><span class="line">    &lt;!-- dfn 定义术语 --&gt;</span><br><span class="line">    &lt;p&gt;通过 TCP/IP 协议连接的全球性计算机网络，叫做 &lt;dfn&gt;Internet&lt;/dfn&gt;&lt;/p&gt;</span><br><span class="line">    &lt;!-- em 定义强调文本 --&gt;</span><br><span class="line">    &lt;em&gt;定义强调文本&lt;/em&gt; &lt;br /&gt;</span><br><span class="line">    &lt;!-- i 定义斜体 --&gt;</span><br><span class="line">    &lt;i&gt;定义斜体&lt;/i&gt; &lt;br /&gt;</span><br><span class="line">    &lt;!-- ins 定义被插入的文本 --&gt;</span><br><span class="line">    &lt;ins&gt;定义被插入的文本&lt;/ins&gt; &lt;br /&gt;</span><br><span class="line">    &lt;!-- kbd 定义键盘文本 --&gt;</span><br><span class="line">    &lt;kbd&gt;定义键盘文本&lt;/kbd&gt;</span><br><span class="line">    &lt;!-- mark 定义有标记的文本 --&gt;</span><br><span class="line">    &lt;p&gt;我们讨论以后决定，&lt;mark&gt;运行会在下周三举办。&lt;/mark&gt;&lt;/p&gt;</span><br><span class="line">    &lt;!-- 定义预定义范围内的度量 --&gt;</span><br><span class="line">    &lt;meter value=&quot;3&quot; min=&quot;0&quot; max=&quot;10&quot;&gt;十分之三&lt;/meter&gt;</span><br><span class="line">    &lt;!-- pre 定义预格式文本 --&gt;</span><br><span class="line">    &lt;pre&gt;</span><br><span class="line">      function add() &#123;</span><br><span class="line">        console.log()</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/pre&gt;</span><br><span class="line">    &lt;!-- progress 定义任何类型的任务进度 --&gt;</span><br><span class="line">    &lt;progress value=&quot;22&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;</span><br><span class="line">    &lt;!-- q 定义短的引用 --&gt;</span><br><span class="line">    &lt;q&gt;Here is a short quotation here is a short quotation&lt;/q&gt;&lt;br /&gt;</span><br><span class="line">    &lt;!-- ruby 定义 ruby 注释（中文注音或字符） --&gt;</span><br><span class="line">    &lt;!-- rp 标签在 ruby 注释中使用，定义不支持 ruby 元素的浏览器所显示的内容 --&gt;</span><br><span class="line">    &lt;!-- rt 标签定义字符（中文注音或字符）的解释或发音 --&gt;</span><br><span class="line">    &lt;ruby&gt;</span><br><span class="line">      汉&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;han&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt; 字&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;zi&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;</span><br><span class="line">    &lt;/ruby&gt;</span><br><span class="line">    &lt;br /&gt;</span><br><span class="line">    &lt;!-- s 不被赞成使用的标签 --&gt;</span><br><span class="line">    &lt;s&gt;不被赞成使用的标签&lt;/s&gt;</span><br><span class="line">    &lt;!-- samp 定义计算机代码样本 --&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      如果使用没有定义的变量，浏览器会报错：&lt;samp</span><br><span class="line">        &gt;Uncaught ReferenceError: foo is not defined&lt;/samp</span><br><span class="line">      &gt;。</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;!-- small 定义小号字体 --&gt;</span><br><span class="line">    &lt;small&gt;定义小号字体&lt;/small&gt;&lt;br /&gt;</span><br><span class="line">    &lt;!-- strong 定义语气更为强烈的强调文本 --&gt;</span><br><span class="line">    &lt;strong&gt;定义语气更为强烈的强调文本&lt;/strong&gt;&lt;br /&gt;</span><br><span class="line">    &lt;!-- sup 定义上标 --&gt;</span><br><span class="line">    定义&lt;sup&gt;上标&lt;/sup&gt;&lt;br /&gt;</span><br><span class="line">    &lt;!-- sub 定义下标 --&gt;</span><br><span class="line">    定义&lt;sub&gt;下标&lt;/sub&gt;&lt;br /&gt;</span><br><span class="line">    &lt;!-- template 定义用作容纳页面加载时隐藏内容的容器 --&gt;</span><br><span class="line">    &lt;template&gt; 我被隐藏了 &lt;/template&gt;</span><br><span class="line">    &lt;!-- time 定义日期/时间 --&gt;</span><br><span class="line">    &lt;time datetime=&quot;2022-02-14&quot;&gt;情人节&lt;/time&gt;&lt;br /&gt;</span><br><span class="line">    &lt;!-- u 定义下划线 --&gt;</span><br><span class="line">    &lt;u&gt;定义下划线&lt;/u&gt;&lt;br /&gt;</span><br><span class="line">    &lt;!-- var 定义变量 --&gt;</span><br><span class="line">    &lt;var&gt;var name = &#x27;李广&#x27;;&lt;/var&gt;</span><br><span class="line">    &lt;!-- wbr 定义可能的换行符 --&gt;</span><br><span class="line">    &lt;p&gt;如果想学习 AJAX，那么您必须熟悉 XML&lt;wbr /&gt;Http&lt;wbr /&gt;Request 对象。&lt;/p&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889</span><br></pre></td></tr></table></figure>
+<h4 id="4、form-表单和输入标签"><a href="#4、form-表单和输入标签" class="headerlink" title="4、form 表单和输入标签"></a>4、form 表单和输入标签</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>form</td>
+<td>定义供用户输入的 HTML 表单</td>
+</tr>
+<tr>
+<td>input</td>
+<td>定义输入控件</td>
+</tr>
+<tr>
+<td>textarea</td>
+<td>定义多行的文本输入控件</td>
+</tr>
+<tr>
+<td>button</td>
+<td>定义按钮</td>
+</tr>
+<tr>
+<td>select</td>
+<td>定义选择列表</td>
+</tr>
+<tr>
+<td>optgroup</td>
+<td>定义选择列表中的选项</td>
+</tr>
+<tr>
+<td>label</td>
+<td>定义 input 元素的标注</td>
+</tr>
+<tr>
+<td>fieldset</td>
+<td>定义围绕表单中元素的边框</td>
+</tr>
+<tr>
+<td>legend</td>
+<td>定义 field 元素的标题</td>
+</tr>
+<tr>
+<td>datalist</td>
+<td>定义下拉列表</td>
+</tr>
+<tr>
+<td>keygen</td>
+<td>定义生成密钥</td>
+</tr>
+<tr>
+<td>output</td>
+<td>定义输入的一些类型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="4-1、form-属性"><a href="#4-1、form-属性" class="headerlink" title="4.1、form 属性"></a>4.1、form 属性</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accept-charset</td>
+<td>charset_list</td>
+<td>规定服务器可处理的表单数据字符集。UTF-8、ISO-8859-1</td>
+</tr>
+<tr>
+<td>action</td>
+<td>URL</td>
+<td>规定当提交表单时向何处发送表单数据</td>
+</tr>
+<tr>
+<td>autocomplete</td>
+<td>on、off</td>
+<td>规定是否用表单的自动完成功能</td>
+</tr>
+<tr>
+<td>enctype</td>
+<td>application/x-www-form-urlencoded（默认；编码所有字符；空格转换为<code>+</code>，特殊符号转为 ASCII 码）、multipart/form-data（不编码；文件上传使用）、text/plain（空格转为<code>+</code>，不对特殊字符编码）</td>
+<td>规定在发送表单数据之前如何对其进行编码</td>
+</tr>
+<tr>
+<td>method</td>
+<td>get、post</td>
+<td>规定用于发送 form-data 的 HTTP 方法</td>
+</tr>
+<tr>
+<td>name</td>
+<td>form_name</td>
+<td>规定表单的名称</td>
+</tr>
+<tr>
+<td>novalidate</td>
+<td>novalidate</td>
+<td>规定，提交表单不进行验证</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="4-1-1、form-表单-rel-属性"><a href="#4-1-1、form-表单-rel-属性" class="headerlink" title="4.1.1、form 表单 rel 属性"></a>4.1.1、form 表单 rel 属性</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alternate</td>
+<td>当前文档的另一种形式，比如翻译</td>
+</tr>
+<tr>
+<td>author</td>
+<td>作者链接</td>
+</tr>
+<tr>
+<td>bookmark</td>
+<td>用作书签的永久地址</td>
+</tr>
+<tr>
+<td>external</td>
+<td>当前文档的外部参考文档</td>
+</tr>
+<tr>
+<td>help</td>
+<td>帮助链接</td>
+</tr>
+<tr>
+<td>license</td>
+<td>许可证链接</td>
+</tr>
+<tr>
+<td>next</td>
+<td>系列文档的下一篇</td>
+</tr>
+<tr>
+<td>nofollow</td>
+<td>告诉搜索引擎忽略该链接，主要用于用户提交的内容，防止有人企图通过添加链接，提高该链接</td>
+</tr>
+<tr>
+<td>noreferrer</td>
+<td>告诉浏览器打开链接时，不要将当前网址作为 HTTP 头信息的 Referer 字段发送出去，这样可以隐藏点击的来源</td>
+</tr>
+<tr>
+<td>noopener</td>
+<td>告诉浏览器打开链接时，不让链接窗口通过 JavaScript 的 window.opener 属性引用原始窗口</td>
+</tr>
+<tr>
+<td>prev</td>
+<td>系列文档的上一篇</td>
+</tr>
+<tr>
+<td>search</td>
+<td>文档的搜索链接</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>文档的标签链接</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="4-1-2、form-表单-target-属性"><a href="#4-1-2、form-表单-target-属性" class="headerlink" title="4.1.2、form 表单 target 属性"></a>4.1.2、form 表单 target 属性</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>_blank</td>
+<td>在新窗口中打开</td>
+</tr>
+<tr>
+<td>_self</td>
+<td>默认。在相同的框架中打开</td>
+</tr>
+<tr>
+<td>_parent</td>
+<td>在父框架集中打开</td>
+</tr>
+<tr>
+<td>_top</td>
+<td>在整个窗口中打开</td>
+</tr>
+<tr>
+<td>framename</td>
+<td>在指定框架中打开</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="4-2、表单控件属性"><a href="#4-2、表单控件属性" class="headerlink" title="4.2、表单控件属性"></a>4.2、表单控件属性</h5><p><strong>input 基本属性</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autocomplete</td>
+<td>on、off</td>
+<td>规定是否使用输入字段的自动完全成功</td>
+</tr>
+<tr>
+<td>autofocus</td>
+<td>autofocus</td>
+<td>规定输入字段在页面加载时是否获得焦点</td>
+</tr>
+<tr>
+<td>dirname</td>
+<td>inputname.dir</td>
+<td>规定将提交的文本方向</td>
+</tr>
+<tr>
+<td>max</td>
+<td>number、date</td>
+<td>规定输入字段的最大值</td>
+</tr>
+<tr>
+<td>min</td>
+<td>number、date</td>
+<td>规定输入字段的最小值</td>
+</tr>
+<tr>
+<td>maxlength</td>
+<td>number</td>
+<td>规定输入字段中的字符的最大长度</td>
+</tr>
+<tr>
+<td>minlength</td>
+<td>number</td>
+<td>规定输入字段中所需要的最小字符数</td>
+</tr>
+<tr>
+<td>name</td>
+<td>field_name</td>
+<td>定义 input 元素的名称</td>
+</tr>
+<tr>
+<td>pattern</td>
+<td>regexp_pattern</td>
+<td>规定输入字段的值的模式或格式</td>
+</tr>
+<tr>
+<td>placeholder</td>
+<td>text</td>
+<td>规定帮助用户填写输入字段的提示</td>
+</tr>
+<tr>
+<td>readonly</td>
+<td>readonly</td>
+<td>规定输入字段为只读</td>
+</tr>
+<tr>
+<td>required</td>
+<td>required</td>
+<td>指示输入字段的值是必须的</td>
+</tr>
+<tr>
+<td>size</td>
+<td>number_of_char</td>
+<td>定义以提交按钮形式显示的图像的 URL</td>
+</tr>
+<tr>
+<td>step</td>
+<td>number</td>
+<td>规定输入字的合法数字间隔</td>
+</tr>
+<tr>
+<td>type</td>
+<td>button、checkbox、file、hidden、image、password、radio、reset、submit、text</td>
+<td>规定 input 元素的类型</td>
+</tr>
+<tr>
+<td>value</td>
+<td>value</td>
+<td>规定 input 元素的值</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>input type=”submit”和 type=“image” 按钮类属性</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>align</td>
+<td>left、right、top、middle、bottom</td>
+<td>规定图像输入的对其方式</td>
+</tr>
+<tr>
+<td>formaction</td>
+<td>URL</td>
+<td>覆盖表单的 action 属性（适用于 type=“submit” 和 type=“image”）</td>
+</tr>
+<tr>
+<td>formenctype</td>
+<td>application/x-www-form-urlencoded、multipart/form-data、text/plain</td>
+<td>覆盖表单的 enctype（适用于 type=“submit” 和 type=“image”）</td>
+</tr>
+<tr>
+<td>formmethod</td>
+<td>get、post</td>
+<td>覆盖表单的 method 属性（适用于 type=“submit” 和 type=“image”）</td>
+</tr>
+<tr>
+<td>formnovalidate</td>
+<td>formnovalidate</td>
+<td>覆盖表单的 novalidate 属性，使用该属性，提交表单不进行验证</td>
+</tr>
+<tr>
+<td>formtarget</td>
+<td>_blank、_self、_parent、_top、framename</td>
+<td>覆盖表单的 target 属性（适用于 type=“submit” 和 type=“image”）</td>
+</tr>
+<tr>
+<td>height</td>
+<td>pixels、%</td>
+<td>定义 input 字段的高度（适用于 type=“image”）</td>
+</tr>
+<tr>
+<td>width</td>
+<td>pixels、%</td>
+<td>定义 input 字段的宽度（适用于 type=“image”）</td>
+</tr>
+<tr>
+<td>src</td>
+<td>URL</td>
+<td>定义以提交按钮形式显示的图像的 URL</td>
+</tr>
+<tr>
+<td>alt</td>
+<td>text</td>
+<td>定义图像输入的替代文本</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>input type=“file” 文件类属性</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accept</td>
+<td>mime_type</td>
+<td>规定通过文件上传提交的文件的类型</td>
+</tr>
+<tr>
+<td>multiple</td>
+<td>multiple</td>
+<td>如果使用该属性，则允许一个以上的值</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>input type=“radio” 和 type=“checkbox” 属性</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>checked</td>
+<td>checked</td>
+<td>规定此 input 元素首次加载时应当被选中</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>input type=“url” 属性</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list</td>
+<td>datalist-id</td>
+<td>引用包含输入字段的预定义选项的 datalist</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>textarea 属性</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cols</td>
+<td>number</td>
+<td>规定文本区内的可见宽度</td>
+</tr>
+<tr>
+<td>rows</td>
+<td>number</td>
+<td>规定文本区内的可见行数</td>
+</tr>
+<tr>
+<td>wrap</td>
+<td>hard、soft</td>
+<td>规定当在表单中提交时，文本区域中的文本如何换行</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>form 表单和输入标签基本使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">  &lt;title&gt;表单和输入&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!-- accept-charset 规定服务器可处理的表单数据字符集 --&gt;</span><br><span class="line">  &lt;!-- action 规定当提交表单时向何处发送表单数据 --&gt;</span><br><span class="line">  &lt;!-- autocomplete 规定是否用表单的自动完成功能 --&gt;</span><br><span class="line">  &lt;!-- enctype 规定在发送表单数据之前如何对其进行编码 --&gt;</span><br><span class="line">  &lt;!-- method 规定用于发送 form-data 的 HTTP 方法 --&gt;</span><br><span class="line">  &lt;!-- name 规定表单的名称 --&gt;</span><br><span class="line">  &lt;!-- novalidate 规定，提交表单不进行验证 --&gt;</span><br><span class="line">  &lt;!-- target 规定在何处打开 action URL --&gt;</span><br><span class="line">  &lt;form id=&quot;myForm&quot; accept-charset=&quot;UTF-8&quot; action=&quot;http://127.0.0.1:80&quot; autocomplete=&quot;on&quot;</span><br><span class="line">    enctype=&quot;application/x-www-form-urlencoded&quot; method=&quot;get&quot; name=&quot;myForm&quot; target=&quot;_self&quot;&gt;</span><br><span class="line">    &lt;!-- fieldset 定义围绕表单中元素的边框 --&gt;</span><br><span class="line">    &lt;fieldset&gt;</span><br><span class="line">      &lt;!-- legend 定义 field 元素的标题  --&gt;</span><br><span class="line">      &lt;legend&gt;个人信息&lt;/legend&gt;</span><br><span class="line">      &lt;!-- type=&quot;text&quot; 定义文本输入框 --&gt;</span><br><span class="line">      &lt;!-- name 定义 input 元素的名称 --&gt;</span><br><span class="line">      &lt;!-- autofocus 规定输入字段在页面加载时是否获得焦点 --&gt;</span><br><span class="line">      &lt;!-- autocomplete 规定是否使用输入字段的自动完成功能 --&gt;</span><br><span class="line">      &lt;!-- required 指示输入字段的值是必须的 --&gt;</span><br><span class="line">      &lt;!-- size 定义输入字段的宽度 --&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        用户名：&lt;input type=&quot;text&quot; name=&quot;username&quot; autofocus autocomplete=&quot;on&quot; size=&quot;40&quot; required /&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;!-- type=&quot;password&quot; 定义密码字段 --&gt;</span><br><span class="line">      &lt;!-- minlength 规定输入字段中所需的最小字符数 --&gt;</span><br><span class="line">      &lt;!-- maxlength 规定输入字段中所需的最大字符数 --&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        密码：&lt;input type=&quot;password&quot; name=&quot;password&quot; minlength=&quot;8&quot; maxlength=&quot;16&quot; /&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;!-- placeholder 规定帮助用户填写输入字段的提示 --&gt;</span><br><span class="line">        姓名:</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&quot;name&quot; pattern=&quot;[a-zA-Z]&quot; placeholder=&quot;请输入姓名&quot; /&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        性别：</span><br><span class="line">        &lt;!-- type=&quot;radio&quot; 定义单选按钮 --&gt;</span><br><span class="line">        &lt;!-- checked 规定此 input 元素首次加载时被选中 --&gt;</span><br><span class="line">        &lt;!-- for 规定 label 绑定到哪个表单元素 --&gt;</span><br><span class="line">        &lt;input id=&quot;male&quot; type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;男&quot; checked /&gt;&lt;label for=&quot;male&quot;&gt;男&lt;/label&gt;</span><br><span class="line">        &lt;input id=&quot;female&quot; type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;女&quot; /&gt;&lt;label for=&quot;female&quot;&gt;女&lt;/label&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        年龄：</span><br><span class="line">        &lt;!-- type=&quot;number&quot; 定义数字输入框 --&gt;</span><br><span class="line">        &lt;!-- max 规定输入字段的最大值 --&gt;</span><br><span class="line">        &lt;!-- min 规定输入字段的最小值 --&gt;</span><br><span class="line">        &lt;!-- step 规定输入字的合法数字间隔 --&gt;</span><br><span class="line">        &lt;input type=&quot;number&quot; min=&quot;10&quot; max=&quot;100&quot; step=&quot;5&quot; /&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;!-- type=&quot;date&quot; 定义日期 --&gt;</span><br><span class="line">        生日：&lt;input type=&quot;date&quot; min=&quot;1995-10-10&quot; max=&quot;2025-10-10&quot; /&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        兴趣：</span><br><span class="line">        &lt;!-- type=&quot;checkbox&quot; 定义复选框 --&gt;</span><br><span class="line">        &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;interest&quot; value=&quot;游泳&quot; /&gt;游泳&lt;/label&gt;</span><br><span class="line">        &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;interest&quot; value=&quot;打球&quot; /&gt;打球&lt;/label&gt;</span><br><span class="line">        &lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;interest&quot; value=&quot;爬山&quot; /&gt;爬山&lt;/label&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        头像：</span><br><span class="line">        &lt;!-- type=&quot;file&quot; 定义输入字段和浏览按钮,供文件上传 --&gt;</span><br><span class="line">        &lt;!-- accept 规定通过文件上传来提交的文件的类型 --&gt;</span><br><span class="line">        &lt;!-- multiple 允许多选 --&gt;</span><br><span class="line">        &lt;input type=&quot;file&quot; name=&quot;file&quot; accept=&quot;image/*&quot; multiple /&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;!-- list 引用包含输入字段的预定义选项的 datalist --&gt;</span><br><span class="line">        网站：&lt;input type=&quot;url&quot; list=&quot;url_list&quot; name=&quot;link&quot; /&gt;</span><br><span class="line">        &lt;!-- datalist 定义下拉列表 --&gt;</span><br><span class="line">        &lt;datalist id=&quot;url_list&quot;&gt;</span><br><span class="line">          &lt;option label=&quot;W3School&quot; value=&quot;http://www.w3schools.com&quot;&gt;&lt;/option&gt;</span><br><span class="line">          &lt;option label=&quot;Google&quot; value=&quot;http://www.google.com&quot;&gt;&lt;/option&gt;</span><br><span class="line">          &lt;option label=&quot;Microsoft&quot; value=&quot;http://www.microsoft.com&quot;&gt;&lt;/option&gt;</span><br><span class="line">        &lt;/datalist&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;!-- readonly 规定输入字段为只读 --&gt;</span><br><span class="line">        &lt;!-- value 规定 input 元素的值 --&gt;</span><br><span class="line">        只读：&lt;input type=&quot;text&quot; readonly value=&quot;只读&quot; /&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;!-- cols 规定文本区内的可见宽度 --&gt;</span><br><span class="line">        &lt;!-- rows 规定文本区内的可见行数 --&gt;</span><br><span class="line">        &lt;!-- wrap 规定表单提交时，文本如何换行 soft：默认，不换行；hard：换行 --&gt;</span><br><span class="line">        备注：&lt;textarea name=&quot;remark&quot; cols=&quot;30&quot; rows=&quot;10&quot; wrap=&quot;hard&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;!-- type=&quot;hidden&quot; 定义隐藏的输入字段 --&gt;</span><br><span class="line">      &lt;input type=&quot;hidden&quot; name=&quot;country&quot; value=&quot;chinese&quot; /&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;!-- type=&quot;reset 定义重置按钮&quot; --&gt;</span><br><span class="line">        &lt;input type=&quot;reset&quot; value=&quot;重置&quot; /&gt;</span><br><span class="line">        &lt;!-- type=&quot;submit&quot; 定义提交按钮 --&gt;</span><br><span class="line">        &lt;!-- formaction 规定当提交表单时向何处发送表单数据 --&gt;</span><br><span class="line">        &lt;!-- formenctype 规定在发送表单数据之前如何对其进行编码 --&gt;</span><br><span class="line">        &lt;!-- formmethod 规定用于发送 form-data 的 HTTP 方法 --&gt;</span><br><span class="line">        &lt;!-- formnovalidate 规定，提交表单不进行验证 --&gt;</span><br><span class="line">        &lt;!-- formtarget 规定在何处打开 action URL --&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;提交&quot; formaction=&quot;http://127.0.0.1:80&quot; formenctype=&quot;application/x-www-form-urlencoded&quot;</span><br><span class="line">          formmethod=&quot;get&quot; formtarget=&quot;_self&quot; /&gt;</span><br><span class="line">        &lt;!-- type=&quot;image&quot; 定义图像形式的提交按钮 --&gt;</span><br><span class="line">        &lt;!-- alt 定义图像输入的替代文本 --&gt;</span><br><span class="line">        &lt;!-- width 定义 input 字段的宽度 --&gt;</span><br><span class="line">        &lt;!-- height 定义 input 字段的高度 --&gt;</span><br><span class="line">        &lt;!-- src 定义提交按钮形式显示的图像的 URL --&gt;</span><br><span class="line">        &lt;input type=&quot;image&quot; width=&quot;58px&quot; height=&quot;23px&quot; src=&quot;submit.gif&quot; alt=&quot;submit&quot; /&gt;</span><br><span class="line">        &lt;!-- type=&quot;button&quot; 定义可点击按钮 --&gt;</span><br><span class="line">        &lt;!-- disabled 禁用此元素 --&gt;</span><br><span class="line">        &lt;input disabled type=&quot;button&quot; value=&quot;普通按钮&quot; /&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        &lt;!-- type=&quot;reset 定义重置按钮&quot; --&gt;</span><br><span class="line">        &lt;button type=&quot;reset&quot; value=&quot;重置&quot;&gt;重置&lt;/button&gt;</span><br><span class="line">        &lt;!-- type=&quot;submit&quot; 定义提交按钮 --&gt;</span><br><span class="line">        &lt;!-- formaction 规定当提交表单时向何处发送表单数据 --&gt;</span><br><span class="line">        &lt;!-- formenctype 规定在发送表单数据之前如何对其进行编码 --&gt;</span><br><span class="line">        &lt;!-- formmethod 规定用于发送 form-data 的 HTTP 方法 --&gt;</span><br><span class="line">        &lt;!-- formnovalidate 规定，提交表单不进行验证 --&gt;</span><br><span class="line">        &lt;!-- formtarget 规定在何处打开 action URL --&gt;</span><br><span class="line">        &lt;button type=&quot;submit&quot; value=&quot;提交&quot; formaction=&quot;http://127.0.0.1:80&quot;</span><br><span class="line">          formenctype=&quot;application/x-www-form-urlencoded&quot; formmethod=&quot;get&quot; formtarget=&quot;_self&quot;&gt;</span><br><span class="line">          提交</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">        &lt;!-- disabled 禁用此元素 --&gt;</span><br><span class="line">        &lt;button disabled type=&quot;button&quot; value=&quot;普通按钮&quot;&gt;普通按钮&lt;/button&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        城市：&lt;select name=&quot;city&quot;&gt;</span><br><span class="line">          &lt;option value=&quot;&quot;&gt;请选择城市&lt;/option&gt;</span><br><span class="line">          &lt;option value=&quot;beijing&quot;&gt;北京&lt;/option&gt;</span><br><span class="line">          &lt;option value=&quot;nanjing&quot;&gt;南京&lt;/option&gt;</span><br><span class="line">          &lt;option value=&quot;shanghai&quot;&gt;上海&lt;/option&gt;</span><br><span class="line">        &lt;/select&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        汽车：&lt;select name=&quot;good&quot;&gt;</span><br><span class="line">          &lt;optgroup label=&quot;大众&quot;&gt;</span><br><span class="line">            &lt;option value=&quot;宝来&quot;&gt;宝来&lt;/option&gt;</span><br><span class="line">            &lt;option value=&quot;朗逸&quot;&gt;朗逸&lt;/option&gt;</span><br><span class="line">            &lt;option value=&quot;桑塔纳&quot;&gt;桑塔纳&lt;/option&gt;</span><br><span class="line">          &lt;/optgroup&gt;</span><br><span class="line">          &lt;optgroup label=&quot;吉利&quot;&gt;</span><br><span class="line">            &lt;option value=&quot;帝豪&quot;&gt;帝豪&lt;/option&gt;</span><br><span class="line">            &lt;option value=&quot;博瑞&quot;&gt;博瑞&lt;/option&gt;</span><br><span class="line">            &lt;option value=&quot;博越&quot;&gt;博越&lt;/option&gt;</span><br><span class="line">          &lt;/optgroup&gt;</span><br><span class="line">        &lt;/select&gt;</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">    &lt;/fieldset&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">  &lt;!-- form 规定输入字段所属的一个或多个表单 --&gt;</span><br><span class="line">  &lt;p&gt;</span><br><span class="line">    我属于myForm 表单&lt;input type=&quot;text&quot; name=&quot;description&quot; form=&quot;myForm&quot; /&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="5、iframe-框架"><a href="#5、iframe-框架" class="headerlink" title="5、iframe 框架"></a>5、<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=iframe&amp;spm=1001.2101.3001.7020">iframe</a> 框架</h4><p>iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。</p>
+<p>把文本放置在 iframe 标签内，可以应对无法理解 iframe 的浏览器。</p>
+<h5 id="5-1、iframe-基本属性"><a href="#5-1、iframe-基本属性" class="headerlink" title="5.1、iframe 基本属性"></a>5.1、iframe 基本属性</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>frame_name</td>
+<td>规定 iframe 的名称</td>
+</tr>
+<tr>
+<td>frameborder</td>
+<td>1、0</td>
+<td>规定是否显示框架周围的边框</td>
+</tr>
+<tr>
+<td>width</td>
+<td>pixels、%</td>
+<td>定义 iframe 的宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td>pixels、%</td>
+<td>定义 iframe 的高度</td>
+</tr>
+<tr>
+<td>marginwidth</td>
+<td>pixels</td>
+<td>定义 iframe 的左侧和右侧的边距</td>
+</tr>
+<tr>
+<td>marginheight</td>
+<td>pixels</td>
+<td>定义 iframe 的顶部和底部的边距</td>
+</tr>
+<tr>
+<td>longdesc</td>
+<td>URL</td>
+<td>规定一个页面，该页面包含了有关 iframe 的较长描述</td>
+</tr>
+<tr>
+<td>scrolling</td>
+<td>yes、no、auto</td>
+<td>规定是否在 iframe 中显示滚动条</td>
+</tr>
+<tr>
+<td>seamless</td>
+<td>seamless</td>
+<td>规定iframe看上去像是包含文档的一部分</td>
+</tr>
+<tr>
+<td>src</td>
+<td>规定在 iframe 中显示的文档的 URL</td>
+<td></td>
+</tr>
+<tr>
+<td>srcdoc</td>
+<td>HTML_code</td>
+<td>规定在 iframe 中显示的页面的 HTML 内容，覆盖src属性</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="6、图像标签"><a href="#6、图像标签" class="headerlink" title="6、图像标签"></a>6、图像标签</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>img</td>
+<td>定义图像</td>
+</tr>
+<tr>
+<td>map</td>
+<td>定义图像映射</td>
+</tr>
+<tr>
+<td>area</td>
+<td>定义图像地图内部的区域</td>
+</tr>
+<tr>
+<td>canvas</td>
+<td>定义图形</td>
+</tr>
+<tr>
+<td>figcaption</td>
+<td>定义figure元素的标题</td>
+</tr>
+<tr>
+<td>figure</td>
+<td>定义媒介元素内容的分组，一级它们的标题</td>
+</tr>
+<tr>
+<td>svg</td>
+<td>定义 SVG 图形的容器</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="6-1、img-标签"><a href="#6-1、img-标签" class="headerlink" title="6.1、img 标签"></a>6.1、img 标签</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src</td>
+<td>URL</td>
+<td>规定显示图像的 URL</td>
+</tr>
+<tr>
+<td>alt</td>
+<td>text</td>
+<td>规定图像的替代文本</td>
+</tr>
+<tr>
+<td>width</td>
+<td>pixels、%</td>
+<td>定义图像的宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td>pixels、%</td>
+<td>定义图像的高度</td>
+</tr>
+<tr>
+<td>loading</td>
+<td>eager、lazy</td>
+<td>规定浏览器是因该立即加载图像还是推迟加载屏幕外图像</td>
+</tr>
+<tr>
+<td>ismap</td>
+<td>URL</td>
+<td>将图像定义为服务器端图像映射</td>
+</tr>
+<tr>
+<td>usemap</td>
+<td>URL</td>
+<td>将图像定义为客户端图像的映射</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>图像标签基本使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">  &lt;title&gt;图像&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!-- 图像立即加载 --&gt;</span><br><span class="line">  &lt;img src=&quot;https://www.w3school.com.cn/i/photo/beijing.jpg&quot; alt=&quot;北京&quot; style=&quot;width:100%&quot;&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- 图像懒加载 --&gt;</span><br><span class="line">  &lt;img src=&quot;https://www.w3school.com.cn/i/photo/wuhan.jpg&quot; alt=&quot;武汉&quot; style=&quot;width:100%&quot; loading=&quot;lazy&quot;&gt;</span><br><span class="line">  &lt;!-- 定义可点击图像 --&gt;</span><br><span class="line">  &lt;img src=&quot;https://www.w3school.com.cn/i/eg_planets.jpg&quot; usemap=&quot;#planetmap&quot; alt=&quot;planets&quot;&gt;</span><br><span class="line">  &lt;!-- map 定义一个客户端图像映射。 --&gt;</span><br><span class="line">  &lt;map name=&quot;planetmap&quot; id=&quot;planetmap&quot;&gt;</span><br><span class="line">    &lt;!-- area 元素定义图像映射中的区域 --&gt;</span><br><span class="line">    &lt;area shape=&quot;circle&quot; coords=&quot;180,139,14&quot; href=&quot;javascript:;&quot; target=&quot;_blank&quot; alt=&quot;venus&quot; /&gt;</span><br><span class="line">    &lt;area shape=&quot;circle&quot; coords=&quot;129,161,10&quot; href=&quot;javascript:;&quot; target=&quot;_blank&quot; alt=&quot;mercury&quot; /&gt;</span><br><span class="line">    &lt;area shape=&quot;rect&quot; coords=&quot;0,0,110, 260&quot; href=&quot;javascript:;&quot; target=&quot;_blank&quot; alt=&quot;sun&quot; /&gt;</span><br><span class="line">  &lt;/map&gt;</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">  &lt;!-- canvas 定义图形 --&gt;</span><br><span class="line">  &lt;canvas id=&quot;myCanvas&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">  &lt;!-- figure 标签规定独立的流内容（图像、图表、照片、代码等） --&gt;</span><br><span class="line">  &lt;figure&gt;</span><br><span class="line">    &lt;!-- figcaption 定义 figure元素的标题 --&gt;</span><br><span class="line">    &lt;figcaption&gt;黄浦江上的卢浦大桥&lt;/figcaption&gt;</span><br><span class="line">    &lt;img src=&quot;https://www.w3school.com.cn/i/shanghai_lupu_bridge.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">  &lt;/figure&gt;</span><br><span class="line">  &lt;!-- svg 标记定义 svg 图形的容器 --&gt;</span><br><span class="line">  &lt;svg width=&quot;100&quot; height=&quot;100&quot;&gt;</span><br><span class="line">    &lt;!-- circle 绘制圆  --&gt;</span><br><span class="line">    &lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;40&quot; stroke=&quot;green&quot; stroke-width=&quot;4&quot; fill=&quot;yellow&quot;&gt;&lt;/circle&gt;</span><br><span class="line">  &lt;/svg&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var canvas = document.getElementById(&#x27;myCanvas&#x27;);</span><br><span class="line">  var ctx = canvas.getContext(&#x27;2d&#x27;);</span><br><span class="line">  ctx.fillStyle = &#x27;#FF0000&#x27;;</span><br><span class="line">  ctx.fillRect(0, 0, 80, 100);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">123456789101112131415161718192021222324252627282930313233343536373839404142434445464748</span><br></pre></td></tr></table></figure>
+<h4 id="7、音频-视频标签"><a href="#7、音频-视频标签" class="headerlink" title="7、音频/视频标签"></a>7、音频/视频标签</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>audio</td>
+<td>定义声音内容</td>
+</tr>
+<tr>
+<td>source</td>
+<td>定义媒介源</td>
+</tr>
+<tr>
+<td>track</td>
+<td>定义用在媒体播放器中的文本轨道</td>
+</tr>
+<tr>
+<td>video</td>
+<td>定义视频</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="7-1、audio-音频标签"><a href="#7-1、audio-音频标签" class="headerlink" title="7.1、audio 音频标签"></a>7.1、audio 音频标签</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autoplay</td>
+<td>autoplay</td>
+<td>如果出现该属性，则音频在就绪后马上播放</td>
+</tr>
+<tr>
+<td>controls</td>
+<td>controls</td>
+<td>如果出现该属性，则向用户显示控件</td>
+</tr>
+<tr>
+<td>loop</td>
+<td>loop</td>
+<td>如果出现该属性，则每当音频结束时重新开始播放</td>
+</tr>
+<tr>
+<td>muted</td>
+<td>muted</td>
+<td>规定视频输出应该被静音</td>
+</tr>
+<tr>
+<td>preload</td>
+<td>auto-当页面加载后载入整个音频、meta-当页面加载后只载入元数据、none-当页面加载后不载入音频</td>
+<td>如果出现该属性免责音频在页面加载时进行加载，并预备播放</td>
+</tr>
+<tr>
+<td>src</td>
+<td>url</td>
+<td>要播放的音频的 URL</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="7-2、video-视频标签"><a href="#7-2、video-视频标签" class="headerlink" title="7.2、video 视频标签"></a>7.2、video 视频标签</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autoplay</td>
+<td>autoplay</td>
+<td>如果出现该属性，则视频在就绪后马上播放</td>
+</tr>
+<tr>
+<td>controls</td>
+<td>controls</td>
+<td>如果出现该属性，则向用户显示控件</td>
+</tr>
+<tr>
+<td>width</td>
+<td>pixels</td>
+<td>设置视频播放器的宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td>pixels</td>
+<td>设置视频播放器的高度</td>
+</tr>
+<tr>
+<td>loop</td>
+<td>loop</td>
+<td>如果出现该属性，则当媒介文件完成播放后再次开始播放</td>
+</tr>
+<tr>
+<td>muted</td>
+<td>muted</td>
+<td>规定视频的音频输出应该被静音</td>
+</tr>
+<tr>
+<td>poster</td>
+<td>URL</td>
+<td>规定视频下载时显示的图像，或者在用户点击播放安妮前显示的图像</td>
+</tr>
+<tr>
+<td>preload</td>
+<td>auto-当页面加载后载入整个音频、meta-当页面加载后只载入元数据、none-当页面加载后不载入音频</td>
+<td>如果出现该属性，则视频在页面加载时进行加载，并预备播放</td>
+</tr>
+<tr>
+<td>src</td>
+<td>url</td>
+<td>要播放的视频的 URL</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="7-3、source-标签"><a href="#7-3、source-标签" class="headerlink" title="7.3、source 标签"></a>7.3、source 标签</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>media</td>
+<td>media query</td>
+<td>规定媒体资源的类型</td>
+</tr>
+<tr>
+<td>src</td>
+<td>url</td>
+<td>固定媒体文件的 URL</td>
+</tr>
+<tr>
+<td>srcset</td>
+<td>url</td>
+<td>规定要在不同情况下使用的图像的 URL</td>
+</tr>
+<tr>
+<td>type</td>
+<td>numeric value</td>
+<td>规定媒体资源的 MIME 类型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="7-4、track-字幕标签"><a href="#7-4、track-字幕标签" class="headerlink" title="7.4、track 字幕标签"></a>7.4、track 字幕标签</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>default</td>
+<td>规定该轨道是默认的，假如没有选择任何轨道</td>
+</tr>
+<tr>
+<td>kind</td>
+<td>captions</td>
+<td>chapters、descriptions、metadata、subtitles</td>
+</tr>
+<tr>
+<td>label</td>
+<td>label</td>
+<td>轨道的标签或标题</td>
+</tr>
+<tr>
+<td>src</td>
+<td>url</td>
+<td>轨道的 URL</td>
+</tr>
+<tr>
+<td>srclang</td>
+<td>langudage_code</td>
+<td>轨道的语言，若 kind 属性值是 “subtitles”，则该属性必需的</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>音频/视频标签基本使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">  &lt;title&gt;音频/视频&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!-- src 要播放的音频的 URL --&gt;</span><br><span class="line">  &lt;!-- preload 当页面加载后不载入音频 --&gt;</span><br><span class="line">  &lt;!-- controls 向用户显示控件，比如播放按钮 --&gt;</span><br><span class="line">  &lt;!-- loop 音频结束时重新开始播放 --&gt;</span><br><span class="line">  &lt;!-- muted 规定被静音 --&gt;</span><br><span class="line">  &lt;!-- autoplay 规定自动播放 --&gt;</span><br><span class="line">  &lt;audio src=&quot;https://www.w3school.com.cn/i/song.ogg&quot; preload=&quot;none&quot; controls loop muted autoplay&gt;</span><br><span class="line">    Your browser does not support the audio element.</span><br><span class="line">  &lt;/audio&gt;</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">  &lt;audio controls=&quot;controls&quot; autoplay=&quot;autoplay&quot;&gt;</span><br><span class="line">    &lt;!-- src 规定媒体文件的 URL --&gt;</span><br><span class="line">    &lt;!-- type 规定媒体资源的 MIME 类型 --&gt;</span><br><span class="line">    &lt;source src=&quot;https://www.w3school.com.cn/i/song.ogg&quot; type=&quot;audio/ogg&quot; /&gt;</span><br><span class="line">    &lt;source src=&quot;https://www.w3school.com.cn/i/song.mp3&quot; type=&quot;audio/mpeg&quot; /&gt;</span><br><span class="line">    Your browser does not support the audio element.</span><br><span class="line">  &lt;/audio&gt;</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">  &lt;picture&gt;</span><br><span class="line">    &lt;!-- media 媒体查询 --&gt;</span><br><span class="line">    &lt;!-- srcset 规定要在不同情况下使用的图像的 URL --&gt;</span><br><span class="line">    &lt;source media=&quot;(min-width:650px)&quot; srcset=&quot;https://www.w3school.com.cn/i/photo/flower-4.jpg&quot;&gt;</span><br><span class="line">    &lt;source media=&quot;(min-width:465px)&quot; srcset=&quot;https://www.w3school.com.cn/i/photo/tulip.jpg&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;https://www.w3school.com.cn/i/photo/flower.gif&quot; alt=&quot;Flowers&quot; style=&quot;width:auto;&quot;&gt;</span><br><span class="line">  &lt;/picture&gt;</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">  &lt;!-- src 要播放的音频的 URL --&gt;</span><br><span class="line">  &lt;!-- width 设置视频播放器的宽度 --&gt;</span><br><span class="line">  &lt;!-- height 设置视频播放器的高度 --&gt;</span><br><span class="line">  &lt;!-- preload 当页面加载后不载入音频 --&gt;</span><br><span class="line">  &lt;!-- controls 向用户显示控件，比如播放按钮 --&gt;</span><br><span class="line">  &lt;!-- loop 音频结束时重新开始播放 --&gt;</span><br><span class="line">  &lt;!-- muted 规定被静音 --&gt;</span><br><span class="line">  &lt;!-- autoplay 规定自动播放 --&gt;</span><br><span class="line">  &lt;!-- poster 规定视频下载时显示的图像，火灾用户点击播放按钮前显示的图像 --&gt;</span><br><span class="line">  &lt;video src=&quot;https://www.w3school.com.cn/i/movie.ogg&quot; width=&quot;500px&quot; height=&quot;400px&quot; preload=&quot;none&quot; controls loop muted</span><br><span class="line">    poster=&quot;https://www.w3school.com.cn/i/photo/tulip.jpg&quot;&gt;</span><br><span class="line">    您的浏览器不支持 video 标签。</span><br><span class="line">  &lt;/video&gt;</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354</span><br></pre></td></tr></table></figure>
+<h4 id="8、链接标签"><a href="#8、链接标签" class="headerlink" title="8、链接标签"></a>8、链接标签</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>定义锚</td>
+</tr>
+<tr>
+<td>link</td>
+<td>定义文档与外部资源的关系</td>
+</tr>
+<tr>
+<td>nav</td>
+<td>定义导航链接</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="8-1、a-链接标签"><a href="#8-1、a-链接标签" class="headerlink" title="8.1、a 链接标签"></a>8.1、a 链接标签</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>download</td>
+<td>filename</td>
+<td>规定被下载的超链接目标</td>
+</tr>
+<tr>
+<td>href</td>
+<td>URL</td>
+<td>规定链接指向的页面的 URL</td>
+</tr>
+<tr>
+<td>hreflang</td>
+<td>langudage_code</td>
+<td>规定被链接文档的语言</td>
+</tr>
+<tr>
+<td>media</td>
+<td>media_query</td>
+<td>规定被链接文档是为何种媒介/设备优化的</td>
+</tr>
+<tr>
+<td>ping</td>
+<td>list_of_URLs</td>
+<td>规定以空格分隔的 URL 列表，当点击链接时，浏览器将发送带有正文 ping 的 post 请求。通常用于跟踪</td>
+</tr>
+<tr>
+<td>rel</td>
+<td>text</td>
+<td>规定当前文档与被链接文档之间的关系</td>
+</tr>
+<tr>
+<td>target</td>
+<td>_blank、_parent、_self、_top</td>
+<td>规定在何处打开链接文档</td>
+</tr>
+<tr>
+<td>type</td>
+<td>MIME type</td>
+<td>规定被链接文档的 MIME 类型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>链接标签基本使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">  &lt;!-- rel 规定当前文档与被链接文档之间的关系。文档的外部样式表 --&gt;</span><br><span class="line">  &lt;!-- type 规定被链接文档的 MIME 类型 --&gt;</span><br><span class="line">  &lt;!-- href 规定被链接文档的位置 --&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;theme.css&quot;&gt;</span><br><span class="line">  &lt;title&gt;链接&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!-- nav 标签定义导航链接部分 --&gt;</span><br><span class="line">  &lt;nav&gt;</span><br><span class="line">    &lt;!-- href 规定链接指向的页面的 URL --&gt;</span><br><span class="line">    &lt;!-- download 规定被下载的超链接目标 --&gt;</span><br><span class="line">    &lt;!-- hreflang 规定链接文档的语言 --&gt;</span><br><span class="line">    &lt;!-- ping 规定以空格分隔的 URL 列表，当点击链接时，浏览器将发送带有正文 ping 的 post 请求 --&gt;</span><br><span class="line">    &lt;!-- target 在新页面打开 --&gt;</span><br><span class="line">    &lt;!-- type 规定被链接文档的 MIME 类型 --&gt;</span><br><span class="line">    &lt;a href=&quot;https://www.w3school.com.cn/i/w3school_logo_white.gif&quot; download=&quot;w3logo&quot; hreflang=&quot;zh&quot;</span><br><span class="line">      ping=&quot;https://www.w3school.com.cn/trackpings&quot; type=&quot;image/*&quot; target=&quot;_blank&quot;&gt;下载图片&lt;/a&gt;</span><br><span class="line">  &lt;/nav&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">123456789101112131415161718192021222324252627</span><br></pre></td></tr></table></figure>
+<h4 id="9、列表标签"><a href="#9、列表标签" class="headerlink" title="9、列表标签"></a>9、列表标签</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ul</td>
+<td>定义无序列表</td>
+</tr>
+<tr>
+<td>ol</td>
+<td>定义有序列表</td>
+</tr>
+<tr>
+<td>li</td>
+<td>定义列表中的项目</td>
+</tr>
+<tr>
+<td>dl</td>
+<td>定义列表</td>
+</tr>
+<tr>
+<td>dt</td>
+<td>定义列表中的项目</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>描述列表中的项目</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>列表标签基本使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">  &lt;title&gt;列表&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!-- ul 定义无序列表 --&gt;</span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">    &lt;!-- li 定义列表项目 --&gt;</span><br><span class="line">    &lt;li&gt;苹果&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;西瓜&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;香蕉&lt;/li&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">  &lt;!-- reversed 规定列表顺序为降序 --&gt;</span><br><span class="line">  &lt;!-- start 规定有序列表的起始值 --&gt;</span><br><span class="line">  &lt;!-- type 规定在列表中使用的标记类型 --&gt;</span><br><span class="line">  &lt;ol reversed start=&quot;5&quot; type=&quot;A&quot;&gt;</span><br><span class="line">    &lt;li&gt;咖啡&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;牛奶&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;茶&lt;/li&gt;</span><br><span class="line">  &lt;/ol&gt;</span><br><span class="line">  &lt;!-- dl 定义列表 --&gt;</span><br><span class="line">  &lt;dl&gt;</span><br><span class="line">    &lt;!-- dt 定义列表中的项目 --&gt;</span><br><span class="line">    &lt;dt&gt;计算机&lt;/dt&gt;</span><br><span class="line">    &lt;!-- dd 定义列表中项目的描述 --&gt;</span><br><span class="line">    &lt;dd&gt;用来计算的仪器 ... ...&lt;/dd&gt;</span><br><span class="line">    &lt;dt&gt;显示器&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;以视觉方式显示信息的装置 ... ...&lt;/dd&gt;</span><br><span class="line">  &lt;/dl&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">123456789101112131415161718192021222324252627282930313233343536</span><br></pre></td></tr></table></figure>
+<h4 id="10、table-表格标签"><a href="#10、table-表格标签" class="headerlink" title="10、table 表格标签"></a>10、table 表格标签</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>table</td>
+<td>定义表格</td>
+</tr>
+<tr>
+<td>caption</td>
+<td>定义表格标题</td>
+</tr>
+<tr>
+<td>thead</td>
+<td>定义表格中表头内容</td>
+</tr>
+<tr>
+<td>tbody</td>
+<td>定义表格中的主体内容</td>
+</tr>
+<tr>
+<td>tfoot</td>
+<td>定义表格中的脚注内容</td>
+</tr>
+<tr>
+<td>tr</td>
+<td>定义表格中的行</td>
+</tr>
+<tr>
+<td>th</td>
+<td>定义表格中的表头单元格</td>
+</tr>
+<tr>
+<td>td</td>
+<td>定义表格中的单元</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="10-1、table-标签属性"><a href="#10-1、table-标签属性" class="headerlink" title="10.1、table 标签属性"></a>10.1、table 标签属性</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>border</td>
+<td>pixels</td>
+<td>规定表格边框的宽度</td>
+</tr>
+<tr>
+<td>cellpadding</td>
+<td>pixels、%</td>
+<td>规定单元边沿与其内容之间的空白</td>
+</tr>
+<tr>
+<td>cellspacing</td>
+<td>pixels、%</td>
+<td>规定单元格之间的空白</td>
+</tr>
+<tr>
+<td>width</td>
+<td>pixels、%</td>
+<td>规定表格的宽度</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>text</td>
+<td>规定表格的摘要</td>
+</tr>
+<tr>
+<td>frame</td>
+<td>void（不显示）、above（上）、rhs（右）、below（下）、lhs（左）、hsides（上下）vsides（左右）、box（全部）、border（全部）</td>
+<td>规定外侧边框的哪个部分是可见的</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="10-2、tr、thead、tbody、tfoot-标签属性"><a href="#10-2、tr、thead、tbody、tfoot-标签属性" class="headerlink" title="10.2、tr、thead、tbody、tfoot 标签属性"></a>10.2、tr、thead、tbody、tfoot 标签属性</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>align</td>
+<td>right、left、center、justify、char</td>
+<td>定义表格行的内容对齐方式</td>
+</tr>
+<tr>
+<td>valign</td>
+<td>top（上）、middle（中）、bottom（下）、baseline（基线）</td>
+<td>规定表格行中内容的垂直对齐方式</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="10-3、th-td-标签属性"><a href="#10-3、th-td-标签属性" class="headerlink" title="10.3、th\td 标签属性"></a>10.3、th\td 标签属性</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>align</td>
+<td>left、right、center、justify</td>
+<td>规定单元格内容的水平对齐方式</td>
+</tr>
+<tr>
+<td>colspan</td>
+<td>number</td>
+<td>设置单元格可横跨的列数</td>
+</tr>
+<tr>
+<td>rowspan</td>
+<td>number</td>
+<td>规定单元格可横跨的行数</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>col、colgroup、row、rowgroup</td>
+<td>定义将表头数据与单元数据相关联的方法</td>
+</tr>
+<tr>
+<td>valign</td>
+<td>top、middle、bottom、baseline</td>
+<td>规定单元格内容的垂直排列方式</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>表格标签基本使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">  &lt;title&gt;列表&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!-- table 定义表格 --&gt;</span><br><span class="line">  &lt;!-- border 定义表格边框宽度 --&gt;</span><br><span class="line">  &lt;!-- width 定义表格宽度 --&gt;</span><br><span class="line">  &lt;!-- cellpadding 规定单元边沿与其内容之间的空白 --&gt;</span><br><span class="line">  &lt;!-- cellspacing 规定单元格之间的空白 --&gt;</span><br><span class="line">  &lt;!-- summary 规定表格的摘要 --&gt;</span><br><span class="line">  &lt;!-- frame 规定外侧边框的哪个部分是可见的 --&gt;</span><br><span class="line">  &lt;table border=&quot;1&quot; width=&quot;100%&quot; cellpadding=&quot;10&quot; cellspacing=&quot;5&quot; style=&quot;height: 80vh;&quot; summary=&quot;18班成绩单&quot; frame=&quot;void&quot;&gt;</span><br><span class="line">    &lt;!-- 定义表格标题 --&gt;</span><br><span class="line">    &lt;caption&gt;18班成绩单&lt;/caption&gt;</span><br><span class="line">    &lt;!-- thead 定义表格中表头内容 --&gt;</span><br><span class="line">    &lt;thead&gt;</span><br><span class="line">      &lt;!-- tr 定义表格中的行 --&gt;</span><br><span class="line">      &lt;tr&gt;</span><br><span class="line">        &lt;!-- th 定义表格中的表头单元格 --&gt;</span><br><span class="line">        &lt;th&gt;姓名&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;年龄&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;成绩&lt;/th&gt;</span><br><span class="line">      &lt;/tr&gt;</span><br><span class="line">    &lt;/thead&gt;</span><br><span class="line">    &lt;!-- tbody 定义表格中的主体内容 --&gt;</span><br><span class="line">    &lt;tbody valign=&quot;top&quot;&gt;</span><br><span class="line">      &lt;!-- valign 规定表格行中内容的垂直对齐方式 --&gt;</span><br><span class="line">      &lt;tr valign=&quot;middle&quot;&gt;</span><br><span class="line">        &lt;!-- td 定义表格中的单元 --&gt;</span><br><span class="line">        &lt;!-- align 定义表格行的内容对齐方式 --&gt;</span><br><span class="line">        &lt;td align=&quot;left&quot;&gt;黄天霸&lt;/td&gt;</span><br><span class="line">        &lt;td align=&quot;center&quot;&gt;15&lt;/td&gt;</span><br><span class="line">        &lt;!-- rowspan 规定单元格可横跨的行数 --&gt;</span><br><span class="line">        &lt;td align=&quot;right&quot; rowspan=&quot;2&quot;&gt;85&lt;/td&gt;</span><br><span class="line">      &lt;/tr&gt;</span><br><span class="line">      &lt;tr valign=&quot;baseline&quot;&gt;</span><br><span class="line">        &lt;td&gt;黄飞虎&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;18&lt;/td&gt;</span><br><span class="line">      &lt;/tr&gt;</span><br><span class="line">      &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;黄飞虎&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;19&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;90&lt;/td&gt;</span><br><span class="line">      &lt;/tr&gt;</span><br><span class="line">      &lt;tr valign=&quot;bottom&quot;&gt;</span><br><span class="line">        &lt;td&gt;黄飞虎&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;20&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;100&lt;/td&gt;</span><br><span class="line">      &lt;/tr&gt;</span><br><span class="line">    &lt;/tbody&gt;</span><br><span class="line">    &lt;!-- tfoot 定义表格中的脚注内容 --&gt;</span><br><span class="line">    &lt;tfoot&gt;</span><br><span class="line">      &lt;tr&gt;</span><br><span class="line">        &lt;!-- colspan 规定单元格可横跨的列数 --&gt;</span><br><span class="line">        &lt;td colspan=&quot;2&quot;&gt;平均成绩&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;90&lt;/td&gt;</span><br><span class="line">      &lt;/tr&gt;</span><br><span class="line">    &lt;/tfoot&gt;</span><br><span class="line">  &lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667</span><br></pre></td></tr></table></figure>
+<h4 id="11、样式和语义"><a href="#11、样式和语义" class="headerlink" title="11、样式和语义"></a>11、样式和语义</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>style</td>
+<td>定义文档的样式信息</td>
+</tr>
+<tr>
+<td>div</td>
+<td>定义文档中的分区或节，块级元素</td>
+</tr>
+<tr>
+<td>span</td>
+<td>定义文档中的节，行内元素</td>
+</tr>
+<tr>
+<td>header</td>
+<td>定义 section 或 page 的页眉</td>
+</tr>
+<tr>
+<td>footer</td>
+<td>定义 section 或 page 的页脚</td>
+</tr>
+<tr>
+<td>main</td>
+<td>定义文档的主要内容</td>
+</tr>
+<tr>
+<td>section</td>
+<td>定义文章中的节</td>
+</tr>
+<tr>
+<td>article</td>
+<td>定义文章</td>
+</tr>
+<tr>
+<td>aside</td>
+<td>定义页面内容之外的内容</td>
+</tr>
+<tr>
+<td>details</td>
+<td>定义对话框或窗口</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>为 details 元素定义可见的标题</td>
+</tr>
+<tr>
+<td>data</td>
+<td>添加给定内容的机器可读翻译</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>样式和语义标签基本使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">  &lt;title&gt;样式和语义标签&lt;/title&gt;</span><br><span class="line">  &lt;!-- 定义文档的样式信息 --&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    * &#123;</span><br><span class="line">      margin: 0;</span><br><span class="line">      padding: 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .container &#123;</span><br><span class="line">      height: 100vh;</span><br><span class="line">      display: flex;</span><br><span class="line">      flex-direction: column;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    header &#123;</span><br><span class="line">      height: 48px;</span><br><span class="line">      line-height: 48px;</span><br><span class="line">      background-color: aqua;</span><br><span class="line">      text-align: center;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    nav &#123;</span><br><span class="line">      height: 40px;</span><br><span class="line">      line-height: 40px;</span><br><span class="line">      background-color: beige;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ul &#123;</span><br><span class="line">      display: flex;</span><br><span class="line">      justify-content: space-around;</span><br><span class="line">      align-items: center;</span><br><span class="line">      list-style: none;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    main &#123;</span><br><span class="line">      flex: 1;</span><br><span class="line">      display: flex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    article &#123;</span><br><span class="line">      flex: 1;</span><br><span class="line">      background-color: cornflowerblue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    aside &#123;</span><br><span class="line">      width: 300px;</span><br><span class="line">      padding: 16px;</span><br><span class="line">      background-color: aquamarine;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    footer &#123;</span><br><span class="line">      height: 40px;</span><br><span class="line">      line-height: 40px;</span><br><span class="line">      text-align: center;</span><br><span class="line">      background-color: burlywood;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!-- div 定义文档中的节 --&gt;</span><br><span class="line">  &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">    &lt;!-- 定义页眉 --&gt;</span><br><span class="line">    &lt;header&gt;</span><br><span class="line">      &lt;!-- h1 定义标题 --&gt;</span><br><span class="line">      &lt;h1&gt;标题一&lt;/h1&gt;</span><br><span class="line">    &lt;/header&gt;</span><br><span class="line">    &lt;!-- nav 定义菜单 --&gt;</span><br><span class="line">    &lt;nav&gt;</span><br><span class="line">      &lt;!-- ul 定义无序列表 --&gt;</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &lt;!-- data 添加给定内容的机器可读翻译 --&gt;</span><br><span class="line">        &lt;li&gt;&lt;data value=&quot;21051&quot;&gt;菜单1&lt;/data&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;data value=&quot;21052&quot;&gt;菜单2&lt;/data&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;data value=&quot;21053&quot;&gt;菜单3&lt;/data&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;data value=&quot;21054&quot;&gt;菜单4&lt;/data&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;data value=&quot;21055&quot;&gt;菜单5&lt;/data&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;data value=&quot;21056&quot;&gt;菜单6&lt;/data&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;data value=&quot;21057&quot;&gt;菜单7&lt;/data&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;data value=&quot;21058&quot;&gt;菜单8&lt;/data&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;data value=&quot;21059&quot;&gt;菜单9&lt;/data&gt;&lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/nav&gt;</span><br><span class="line">    &lt;!-- main 定义文档的主要内容 --&gt;</span><br><span class="line">    &lt;main&gt;</span><br><span class="line">      &lt;!-- article 定义文章 --&gt;</span><br><span class="line">      &lt;article&gt;</span><br><span class="line">        &lt;!-- section 定义文档中的节 --&gt;</span><br><span class="line">        &lt;section&gt;&lt;/section&gt;</span><br><span class="line">      &lt;/article&gt;</span><br><span class="line">      &lt;!-- aside 定义页面内容之外的内容 --&gt;</span><br><span class="line">      &lt;aside&gt;</span><br><span class="line">        &lt;h4&gt;Epcot Center&lt;/h4&gt;</span><br><span class="line">        &lt;span&gt;The Epcot Center is a theme park in Disney World, Florida&lt;/span&gt;</span><br><span class="line">      &lt;/aside&gt;</span><br><span class="line">    &lt;/main&gt;</span><br><span class="line">    &lt;!-- footer 定义页脚 --&gt;</span><br><span class="line">    &lt;footer&gt;</span><br><span class="line">      &lt;!-- details 描述文档或文档某个部分的细节 --&gt;</span><br><span class="line">      &lt;details&gt;</span><br><span class="line">        &lt;!-- summary 定义 details 的标题 --&gt;</span><br><span class="line">        &lt;summary&gt;COPYRIGHT@测试&lt;/summary&gt;</span><br><span class="line">        &lt;p&gt;All pages and graphics on this web site are the property of W3School&lt;/p&gt;</span><br><span class="line">      &lt;/details&gt;</span><br><span class="line">    &lt;/footer&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114</span><br></pre></td></tr></table></figure>
+<h4 id="12、元信息"><a href="#12、元信息" class="headerlink" title="12、元信息"></a>12、元信息</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>head</td>
+<td>定义关于文档的信息</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>关于 HTML 文档的元信息</td>
+</tr>
+<tr>
+<td>base</td>
+<td>定义页面中所有链接的默认地址或默认目标</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>meta属性</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>charset</td>
+<td>character_set</td>
+<td>规定 HTML 文档的字符编码</td>
+</tr>
+<tr>
+<td>content</td>
+<td>text</td>
+<td>定义与 http-equiv 或 name 属性相关的元信息</td>
+</tr>
+<tr>
+<td>http-equiv</td>
+<td>content-security-policy（规定文档的内容策略）、content-type（规定文档的字符编码）、default-type（规定要使用的首选样式表）、refresh（定义文档自我刷新的时间间隔）</td>
+<td>把 content 属性关联到 HTTP 头部</td>
+</tr>
+<tr>
+<td>name</td>
+<td>author（规定文档作者的姓名）、description（规定页面的描述。搜索引擎可以选择此描述来显示搜索结果）、generator（规定用于生成文档的软件包之一）、keywords（规定以逗号分隔的关键字列表）、viewport（控制视口）</td>
+<td>把 content 属性关联到一个名称</td>
+</tr>
+<tr>
+<td>scheme</td>
+<td>some_text</td>
+<td>定义用于翻译 content 属性值的格式</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>元信息标签基本使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;!-- head 定义关于文档的信息 --&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;!-- meta 定义关于 HTML 文档的元信息 --&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=UTF-8&quot; /&gt;</span><br><span class="line">  &lt;!-- 定义文档和它的关键词 --&gt;</span><br><span class="line">  &lt;meta name=&quot;description&quot; content=&quot;HTML examples&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;keywords&quot; content=&quot;HTML,DHTML,CSS,XML,XHTML,JavaScript&quot;&gt;</span><br><span class="line">  &lt;!-- 定义文档描述，表示创作者 --&gt;</span><br><span class="line">  &lt;meta name=&quot;author&quot; content=&quot;w3school.com,cn&quot;&gt;</span><br><span class="line">  &lt;!-- 重定向 --&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;Refresh&quot; content=&quot;5;url=http://www.w3school.com.cn&quot;&gt;</span><br><span class="line">  &lt;!-- title 定义文档的标题 --&gt;</span><br><span class="line">  &lt;title&gt;元信息&lt;/title&gt;</span><br><span class="line">  &lt;!-- base 页面上所有链接规定默认地址 --&gt;</span><br><span class="line">  &lt;base href=&quot;http://www.w3school.com.cn&quot;&gt;</span><br><span class="line">  &lt;!-- base 页面上所有链接规定默认目标 --&gt;</span><br><span class="line">  &lt;base target=&quot;_blank&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!-- a 默认打开 http://www.w3school.com.cn --&gt;</span><br><span class="line">  &lt;!-- a 默认在新页面打开 _blank --&gt;</span><br><span class="line">  &lt;a href=&quot;#&quot;&gt;打开默认地址&lt;/a&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">1234567891011121314151617181920212223242526272829</span><br></pre></td></tr></table></figure>
+<h4 id="13、编程标签"><a href="#13、编程标签" class="headerlink" title="13、编程标签"></a>13、编程标签</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>script</td>
+<td>定义客户端脚本</td>
+</tr>
+<tr>
+<td>noscript</td>
+<td>定义针对不支持客户端脚本的用户的替代内容</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>script 属性</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>async</td>
+<td>async</td>
+<td>规定异步执行脚本</td>
+</tr>
+<tr>
+<td>charset</td>
+<td>charset</td>
+<td>规定在外部脚本文件中使用的字符编码</td>
+</tr>
+<tr>
+<td>corssorigin</td>
+<td>anonymous、use-credentials</td>
+<td>将请求模式设置为 HTTP CORS 请求</td>
+</tr>
+<tr>
+<td>defer</td>
+<td>defer</td>
+<td>规定是否对脚本执行进行延迟，直到页面加载为止</td>
+</tr>
+<tr>
+<td>src</td>
+<td>规定外部脚本文件的 URL</td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>MIME-type</td>
+<td>指示脚本的 MIME 类型</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="14、全局属性"><a href="#14、全局属性" class="headerlink" title="14、全局属性"></a>14、全局属性</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accesskey</td>
+<td>规定激活元素的快捷键</td>
+</tr>
+<tr>
+<td>class</td>
+<td>规定元素的一个或多个类型</td>
+</tr>
+<tr>
+<td>contenteditable</td>
+<td>规定元素内容是否可编辑</td>
+</tr>
+<tr>
+<td>contextmenu</td>
+<td>规定元素的上下文菜单。上下文菜单在用户点击元素时显示</td>
+</tr>
+<tr>
+<td>data-*</td>
+<td>用于存储页面或应用程序的私有定制数据</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>规定元素中内容的文本方向</td>
+</tr>
+<tr>
+<td>draggable</td>
+<td>规定元素是否可拖动</td>
+</tr>
+<tr>
+<td>dropzone</td>
+<td>规定在拖动被拖动数据时是否进行复制、移动或链接</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>规定元素仍未或不再相关</td>
+</tr>
+<tr>
+<td>id</td>
+<td>规定元素的唯一id</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>规定元素内容的语言</td>
+</tr>
+<tr>
+<td>spellcheck</td>
+<td>规定是否对元素进行拼写和语法检查</td>
+</tr>
+<tr>
+<td>style</td>
+<td>规定元素的行内 CSS 样式</td>
+</tr>
+<tr>
+<td>tabindex</td>
+<td>规定元素的 tab 键次序</td>
+</tr>
+<tr>
+<td>title</td>
+<td>规定有关元素的额外信息</td>
+</tr>
+<tr>
+<td>translate</td>
+<td>规定是否应该翻译元素内容</td>
+</tr>
+</tbody>
+</table>
+</div>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://192.168.43.131">宇仔</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://192.168.43.131/2024/11/24/HTML%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">http://192.168.43.131/2024/11/24/HTML%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://192.168.43.131" target="_blank">宇仔的小破站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></div><div class="post_share"><div class="social-share" data-image="https://img.picgo.net/2024/12/07/169_1_e78c8d63-2523-4fdd-b6d7-8f51115119cc5e21607d0201853b.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/11/24/Java%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%9550%E9%A2%98/" title="Java经典算法50题"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/16_9_1_convert.iof8be17b72fd43570.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java经典算法50题</div></div></a></div><div class="next-post pull-right"><a href="/2024/11/24/C%E8%AF%AD%E8%A8%80%E7%BB%8F%E5%85%B8100%E4%BE%8B/" title="C语言经典100例"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_1dcc9958-41f3-416d-b80a-b8be820f67430b82f2f4c399f3a1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C语言经典100例</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/11/24/CSS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="css基础知识"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_e78c8d63-2523-4fdd-b6d7-8f51115119cc5e21607d0201853b.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-24</div><div class="title">css基础知识</div></div></a></div><div><a href="/2024/11/24/Java%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%9550%E9%A2%98/" title="Java经典算法50题"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/16_9_1_convert.iof8be17b72fd43570.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-24</div><div class="title">Java经典算法50题</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">宇仔</div><div class="author-info__description">一个喜欢折腾的小菜鸟</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">26</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Myj-2024"><i></i><span>🚀 前往小家...</span><i class="faa-passing animated" style="padding-left:20px;display:inline-block;vertical-align:middle;"><svg class="icon" style="height:28px;width:28px;fill:currentColor;position:relative;top:5px"><use xlink:href="#icon-xiaoqiche"></use></svg></i></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Myj-2024" target="_blank" title="Github"><i class="iconfont icon-github1"></i></a><a class="social-icon" href="mailto:3287456080@qq.com" target="_blank" title="Email"><i class="iconfont icon-youxiang"></i></a></div><div id="welcome-info"></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">宇仔的小破站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">HTML基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81HTML-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">1、HTML 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF-HTML"><span class="toc-number">1.0.0.1.1.</span> <span class="toc-text">1.1、什么是 HTML?</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2%E3%80%81HTML-%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.1.2.</span> <span class="toc-text">1.2、HTML 标签</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3%E3%80%81HTML-%E6%96%87%E6%A1%A3-%E7%BD%91%E9%A1%B5"><span class="toc-number">1.0.0.1.3.</span> <span class="toc-text">1.3、HTML 文档 &#x3D; 网页</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81HTML-%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">2、HTML 基础功能标签</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1%E3%80%81-lt-DOCTYPE-gt-%E5%AE%9A%E4%B9%89%E5%92%8C%E7%94%A8%E6%B3%95"><span class="toc-number">1.0.0.2.1.</span> <span class="toc-text">2.1、&lt;!DOCTYPE&gt;定义和用法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#2-1-1%E3%80%81HTML-4-0-1-Strict"><span class="toc-number">1.0.0.2.1.1.</span> <span class="toc-text">2.1.1、HTML 4.0.1 Strict</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-1-2%E3%80%81HTML-4-0-1-Transitional"><span class="toc-number">1.0.0.2.1.2.</span> <span class="toc-text">2.1.2、HTML 4.0.1 Transitional</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-1-3%E3%80%81HTML-4-0-1-Frameset"><span class="toc-number">1.0.0.2.1.3.</span> <span class="toc-text">2.1.3、HTML 4.0.1 Frameset</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-1-4%E3%80%81XHTML-1-0-Strict"><span class="toc-number">1.0.0.2.1.4.</span> <span class="toc-text">2.1.4、XHTML 1.0 Strict</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-1-5%E3%80%81XHTML-1-0-Transitional"><span class="toc-number">1.0.0.2.1.5.</span> <span class="toc-text">2.1.5、XHTML 1.0 Transitional</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-1-6%E3%80%81XHTML-1-0-Frameset"><span class="toc-number">1.0.0.2.1.6.</span> <span class="toc-text">2.1.6、XHTML 1.0 Frameset</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-1-7%E3%80%81XHTML-1-1"><span class="toc-number">1.0.0.2.1.7.</span> <span class="toc-text">2.1.7、XHTML 1.1</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81HTML-%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">3、HTML 格式化文本标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81form-%E8%A1%A8%E5%8D%95%E5%92%8C%E8%BE%93%E5%85%A5%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">4、form 表单和输入标签</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1%E3%80%81form-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.0.4.1.</span> <span class="toc-text">4.1、form 属性</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#4-1-1%E3%80%81form-%E8%A1%A8%E5%8D%95-rel-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.0.4.1.1.</span> <span class="toc-text">4.1.1、form 表单 rel 属性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-1-2%E3%80%81form-%E8%A1%A8%E5%8D%95-target-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.0.4.1.2.</span> <span class="toc-text">4.1.2、form 表单 target 属性</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2%E3%80%81%E8%A1%A8%E5%8D%95%E6%8E%A7%E4%BB%B6%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.0.4.2.</span> <span class="toc-text">4.2、表单控件属性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81iframe-%E6%A1%86%E6%9E%B6"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">5、iframe 框架</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1%E3%80%81iframe-%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.0.5.1.</span> <span class="toc-text">5.1、iframe 基本属性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81%E5%9B%BE%E5%83%8F%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.6.</span> <span class="toc-text">6、图像标签</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-1%E3%80%81img-%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.6.1.</span> <span class="toc-text">6.1、img 标签</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81%E9%9F%B3%E9%A2%91-%E8%A7%86%E9%A2%91%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.7.</span> <span class="toc-text">7、音频&#x2F;视频标签</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#7-1%E3%80%81audio-%E9%9F%B3%E9%A2%91%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.7.1.</span> <span class="toc-text">7.1、audio 音频标签</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-2%E3%80%81video-%E8%A7%86%E9%A2%91%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.7.2.</span> <span class="toc-text">7.2、video 视频标签</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-3%E3%80%81source-%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.7.3.</span> <span class="toc-text">7.3、source 标签</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-4%E3%80%81track-%E5%AD%97%E5%B9%95%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.7.4.</span> <span class="toc-text">7.4、track 字幕标签</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8%E3%80%81%E9%93%BE%E6%8E%A5%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.8.</span> <span class="toc-text">8、链接标签</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#8-1%E3%80%81a-%E9%93%BE%E6%8E%A5%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.8.1.</span> <span class="toc-text">8.1、a 链接标签</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9%E3%80%81%E5%88%97%E8%A1%A8%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.9.</span> <span class="toc-text">9、列表标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10%E3%80%81table-%E8%A1%A8%E6%A0%BC%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.10.</span> <span class="toc-text">10、table 表格标签</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#10-1%E3%80%81table-%E6%A0%87%E7%AD%BE%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.0.10.1.</span> <span class="toc-text">10.1、table 标签属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-2%E3%80%81tr%E3%80%81thead%E3%80%81tbody%E3%80%81tfoot-%E6%A0%87%E7%AD%BE%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.0.10.2.</span> <span class="toc-text">10.2、tr、thead、tbody、tfoot 标签属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-3%E3%80%81th-td-%E6%A0%87%E7%AD%BE%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.0.10.3.</span> <span class="toc-text">10.3、th\td 标签属性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11%E3%80%81%E6%A0%B7%E5%BC%8F%E5%92%8C%E8%AF%AD%E4%B9%89"><span class="toc-number">1.0.0.11.</span> <span class="toc-text">11、样式和语义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12%E3%80%81%E5%85%83%E4%BF%A1%E6%81%AF"><span class="toc-number">1.0.0.12.</span> <span class="toc-text">12、元信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13%E3%80%81%E7%BC%96%E7%A8%8B%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.0.13.</span> <span class="toc-text">13、编程标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14%E3%80%81%E5%85%A8%E5%B1%80%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.0.14.</span> <span class="toc-text">14、全局属性</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/12/04/Centos%207%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%91%BD%E4%BB%A4/" title="Centos 7常用设置和命令📙"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_3_7b5cba12-ac44-49d0-801a-4e2eff72a04cdf7afc3f3e8136a5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Centos 7常用设置和命令📙"/></a><div class="content"><a class="title" href="/2024/12/04/Centos%207%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%91%BD%E4%BB%A4/" title="Centos 7常用设置和命令📙">Centos 7常用设置和命令📙</a><time datetime="2024-12-04T12:06:13.000Z" title="发表于 2024-12-04 20:06:13">2024-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/02/Syncthing%E5%A4%9A%E5%B9%B3%E5%8F%B0%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="Syncthing多平台文件同步工具部署安装教程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/16.9_Still9a6c5cbb75130a12.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Syncthing多平台文件同步工具部署安装教程"/></a><div class="content"><a class="title" href="/2024/12/02/Syncthing%E5%A4%9A%E5%B9%B3%E5%8F%B0%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="Syncthing多平台文件同步工具部署安装教程">Syncthing多平台文件同步工具部署安装教程</a><time datetime="2024-12-02T02:00:00.000Z" title="发表于 2024-12-02 10:00:00">2024-12-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/01/%E5%9F%BA%E4%BA%8E%20Ubuntu%2024.04%20%E7%9A%84%20Hexo%20%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="基于 Ubuntu 24.04 的 Hexo 博客搭建"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_3_50580002-cce4-474a-a611-c25345372eb6ec679c4e5822de24.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于 Ubuntu 24.04 的 Hexo 博客搭建"/></a><div class="content"><a class="title" href="/2024/12/01/%E5%9F%BA%E4%BA%8E%20Ubuntu%2024.04%20%E7%9A%84%20Hexo%20%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="基于 Ubuntu 24.04 的 Hexo 博客搭建">基于 Ubuntu 24.04 的 Hexo 博客搭建</a><time datetime="2024-12-01T06:00:00.000Z" title="发表于 2024-12-01 14:00:00">2024-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/01/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="C语言学习笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_2_cbe9dbcf-fcb3-4aa8-ad14-7554c0cb4798c6160e3b810e4673.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言学习笔记"/></a><div class="content"><a class="title" href="/2024/12/01/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="C语言学习笔记">C语言学习笔记</a><time datetime="2024-12-01T04:00:00.000Z" title="发表于 2024-12-01 12:00:00">2024-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/01/Ubuntu%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%91%BD%E4%BB%A4/" title="Ubuntu常用设置和命令"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/16.9_Iamalex340f652ed853d658.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu常用设置和命令"/></a><div class="content"><a class="title" href="/2024/12/01/Ubuntu%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%91%BD%E4%BB%A4/" title="Ubuntu常用设置和命令">Ubuntu常用设置和命令</a><time datetime="2024-12-01T04:00:00.000Z" title="发表于 2024-12-01 12:00:00">2024-12-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/posts/eec9786.html">魔改指南</a><a href="/box/nav/">网址导航</a></li><li><a href="/social/link/">我的朋友</a><a href="/comments/">留点什么</a></li><li><a href="/personal/about/">关于作者</a><a href="/archives/">文章归档</a></li><li><a href="/categories/">文章分类</a><a href="/tags/">文章标签</a></li><li><a href="/box/Gallery/">我的画廊</a><a href="/personal/bb/">我的唠叨</a></li><li><a href="/site/time/">建设进程</a><a href="/site/census/">网站统计</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a target="_blank" rel="noopener" href="https://stackoverflow.com/" title="stackoverflow"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2024</b></span><span><b>&nbsp;&nbsp;By 宇仔</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.</div><div id="workboard"></div><p id="ghbdages"></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><button class="share" type="button" title="分享链接" onclick="share()"><i class="fas fa-share-nodes"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i><span id="percent">0<span>%</span></span></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i><span id="percent">0<span>%</span></span></button><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.min.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://hexo-ten-psi.vercel.app',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://hexo-ten-psi.vercel.app',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdn.staticfile.org/twikoo/1.6.8/twikoo.all.min.js').then(init)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script defer src="/js/custom.js"></script><script defer src="/js/cursor.js"></script><script async src="//at.alicdn.com/t/font_2264842_b004iy0kk2b.js"></script><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer data-pjax src="/js/readPercent.js"></script><script defer data-pjax src="/js/emoji.js"></script><script async src="https://cdn1.tianli0.top/npm/vue@2.6.14/dist/vue.min.js"></script><script async src="https://cdn1.tianli0.top/npm/element-ui@2.15.6/lib/index.js"></script><script src="/js/share.js"></script><script src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"></script><script async data-pjax src="/js/txmap.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/runtime.js"></script><script async src="/js/console.js"></script><script async src="/js/title.js"></script><script id="canvas_nest" defer="defer" color="255,255,255" opacity="0.5" zIndex="-1" count="99" mobile="false" src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/canvas-nest.min.js"></script><script id="click-heart" src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/click-heart.min.js" async="async" mobile="true"></script><script>(() => {
+  window.$crisp = [];
+  window.CRISP_WEBSITE_ID = "";
+  (function () {
+    d = document;
+    s = d.createElement("script");
+    s.src = "https://client.crisp.chat/l.js";
+    s.async = 1;
+    d.getElementsByTagName("head")[0].appendChild(s);
+  })();
+  $crisp.push(["safe", true])
+
+  const isChatBtn = true
+  const isChatHideShow = false
+
+  if (isChatBtn) {
+    const open = () => {
+      $crisp.push(["do", "chat:show"])
+      $crisp.push(["do", "chat:open"])
+    }
+
+    const close = () => {
+      $crisp.push(["do", "chat:hide"])
+    }
+
+    close()
+    $crisp.push(["on", "chat:closed", function() {
+      close()
+    }])
+
+    window.chatBtnFn = () => {
+      $crisp.is("chat:visible") ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        $crisp.push(["do", "chat:hide"])
+      },
+      show: () => {
+        $crisp.push(["do", "chat:show"])
+      }
+    }
+  }
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="http://192.168.43.131/categories/前端/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 前端学习 (3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="http://192.168.43.131/categories/C语言/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🐱 C语言学习 (4)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="http://192.168.43.131/categories/算法/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 算法学习 (2)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="http://192.168.43.131/categories/Linux/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💻 Linux学习 (7)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="http://192.168.43.131/categories/教程/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📒 各类教程 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="http://192.168.43.131/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = 'c22e0a41e2744e6898e8b4155e24fd2a';
+  var gaud_map_key = '1912299dd62b353975eec880d5246b6f';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/shell 脚本/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_2_1695ac0d-2435-4d00-bbcf-f9b987af8c9c1ac1a3d4046a47db.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/shell 脚本/" alt="">shell脚本</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/shell 脚本/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/Redis基础命令集详解/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_2_cbe9dbcf-fcb3-4aa8-ad14-7554c0cb4798c6160e3b810e4673.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/Redis基础命令集详解/" alt="">Redis基础命令集详解</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/Redis基础命令集详解/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/Java经典算法50题/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/16_9_1_convert.iof8be17b72fd43570.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/Java经典算法50题/" alt="">Java经典算法50题</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/Java经典算法50题/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/100个 Shell 脚本经典案例/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_0106c20a-79e4-47df-a880-0054fa7d12d615ee34c25eb7c306.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/100个 Shell 脚本经典案例/" alt="">100个shell脚本经典案例</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/100个 Shell 脚本经典案例/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/shell脚本语言/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/16_9_a4120690-4d8a-4fb0-bb3b-236a8f72b104b422be84b69bc299.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/shell脚本语言/" alt="">shell脚本语言</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/shell脚本语言/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/Redis详解/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_e78c8d63-2523-4fdd-b6d7-8f51115119cc5e21607d0201853b.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/Redis详解/" alt="">Redis详解</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/Redis详解/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/MySQL常用语法/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/16_9_d865bed5-ac4f-4c0e-9b58-2c1c82c775abd79936a8ef830d9f.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/MySQL常用语法/" alt="">MySQL常用语法</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/MySQL常用语法/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/MySQL/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_2_1695ac0d-2435-4d00-bbcf-f9b987af8c9c1ac1a3d4046a47db.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/MySQL/" alt="">MySQL</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/MySQL/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/C语言经典100例/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_1dcc9958-41f3-416d-b80a-b8be820f67430b82f2f4c399f3a1.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/C语言经典100例/" alt="">C语言经典100例</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/C语言经典100例/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/C语言常见代码/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_0106c20a-79e4-47df-a880-0054fa7d12d615ee34c25eb7c306.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/C语言常见代码/" alt="">C语言常见代码</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/C语言常见代码/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/CSS基础知识/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_e78c8d63-2523-4fdd-b6d7-8f51115119cc5e21607d0201853b.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/CSS基础知识/" alt="">css基础知识</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/CSS基础知识/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/数据结构与算法/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_2_76879121-998a-4be1-9e7a-91d4f717e06b7bd4c7f01b92fed6.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/数据结构与算法/" alt="">数据结构与算法</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/数据结构与算法/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/01/26/算法学习笔记/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_2_1695ac0d-2435-4d00-bbcf-f9b987af8c9c1ac1a3d4046a47db.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-01-26</span><a class="blog-slider__title" href="2023/01/26/算法学习笔记/" alt="">算法学习笔记</a><div class="blog-slider__text">算法学习笔记🐌</div><a class="blog-slider__button" href="2023/01/26/算法学习笔记/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/Linux命令大全/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/16_9_1_convert.iof8be17b72fd43570.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/Linux命令大全/" alt="">Linux常用命令</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/Linux命令大全/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/02/11/C语言刷题笔记/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/16_9_1_convert.iof8be17b72fd43570.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-02-11</span><a class="blog-slider__title" href="2023/02/11/C语言刷题笔记/" alt="">C语言刷题笔记</a><div class="blog-slider__text">C语言刷题笔记🦆</div><a class="blog-slider__button" href="2023/02/11/C语言刷题笔记/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/12/01/C语言学习笔记/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_2_cbe9dbcf-fcb3-4aa8-ad14-7554c0cb4798c6160e3b810e4673.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-12-01</span><a class="blog-slider__title" href="2024/12/01/C语言学习笔记/" alt="">C语言学习笔记</a><div class="blog-slider__text">C语言学习笔记 🍒</div><a class="blog-slider__button" href="2024/12/01/C语言学习笔记/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/12/01/基于 Ubuntu 24.04 的 Hexo 博客搭建/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_3_50580002-cce4-474a-a611-c25345372eb6ec679c4e5822de24.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-12-01</span><a class="blog-slider__title" href="2024/12/01/基于 Ubuntu 24.04 的 Hexo 博客搭建/" alt="">基于 Ubuntu 24.04 的 Hexo 博客搭建</a><div class="blog-slider__text">基于 Ubuntu 24.04 的 Hexo 博客搭建📇</div><a class="blog-slider__button" href="2024/12/01/基于 Ubuntu 24.04 的 Hexo 博客搭建/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/12/01/Ubuntu常用设置和命令/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/16.9_Iamalex340f652ed853d658.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-12-01</span><a class="blog-slider__title" href="2024/12/01/Ubuntu常用设置和命令/" alt="">Ubuntu常用设置和命令</a><div class="blog-slider__text">Ubuntu常用设置和命令 📃</div><a class="blog-slider__button" href="2024/12/01/Ubuntu常用设置和命令/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/HTML基础知识/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_e78c8d63-2523-4fdd-b6d7-8f51115119cc5e21607d0201853b.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/HTML基础知识/" alt="">HTML基础知识</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2024/11/24/HTML基础知识/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '700ms');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --></body></html>
