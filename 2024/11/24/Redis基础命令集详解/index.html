@@ -1,0 +1,912 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Redis基础命令详解 | 宇仔的小破站</title><meta name="author" content="宇仔"><meta name="copyright" content="宇仔"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="Redis基础命令详解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis基础命令详解">
+<meta property="og:url" content="https://myj-2024.github.io/2024/11/24/Redis%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E9%9B%86%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="宇仔的小破站">
+<meta property="og:description" content="Redis基础命令详解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.picgo.net/2024/12/07/169_1_48fd67f7-3077-434f-8720-69d366a949594245b047d69136ba.jpg">
+<meta property="article:published_time" content="2024-11-24T11:47:12.000Z">
+<meta property="article:modified_time" content="2024-11-24T11:47:12.000Z">
+<meta property="article:author" content="宇仔">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.picgo.net/2024/12/07/169_1_48fd67f7-3077-434f-8720-69d366a949594245b047d69136ba.jpg"><link rel="shortcut icon" href="https://img.picgo.net/2024/12/07/08ef53c150f276baea908621b9ae5ff6f990343b25ce8b76.jpg"><link rel="canonical" href="https://myj-2024.github.io/2024/11/24/Redis%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E9%9B%86%E8%AF%A6%E8%A7%A3/index.html"><link rel="preconnect" href="//cdnjs.cloudflare.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdnjs.cloudflare.com/ajax/libs/egjs-infinitegrid/4.11.1/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Redis基础命令详解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-24 19:47:12'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/progress_bar.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/readPercent.css"><link rel="stylesheet" href="https://cdn1.tianli0.top/npm/element-ui@2.15.6/packages/theme-chalk/lib/index.css"><link rel="stylesheet" href="/css/universe.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-zhuye1"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw iconfont icon-guidang"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw iconfont icon-biaoqian"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont icon-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw iconfont icon-youlian"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw iconfont icon-liuyanmoban"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-guanyu1"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img.picgo.net/2024/12/07/169_1_48fd67f7-3077-434f-8720-69d366a949594245b047d69136ba.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="宇仔的小破站"><span class="site-name">宇仔的小破站</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="iconfont icon-a-044_sousuo fa-fw"></i><!-- span=' '+_p('search.title')--></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-zhuye1"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw iconfont icon-guidang"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw iconfont icon-biaoqian"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont icon-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw iconfont icon-youlian"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw iconfont icon-liuyanmoban"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-guanyu1"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="iconfont icon-caidan fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Redis基础命令详解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-24T11:47:12.000Z" title="发表于 2024-11-24 19:47:12">2024-11-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-24T11:47:12.000Z" title="更新于 2024-11-24 19:47:12">2024-11-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Redis/">Redis</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">11.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>38分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="Redis基础命令详解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2024/11/24/Redis%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E9%9B%86%E8%AF%A6%E8%A7%A3/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Redis基础命令详解"><a href="#Redis基础命令详解" class="headerlink" title="Redis基础命令详解"></a>Redis基础命令详解</h1><p>[TOC]</p>
+<h3 id="【Redis01】Redis常用命令"><a href="#【Redis01】Redis常用命令" class="headerlink" title="【Redis01】Redis常用命令"></a>【Redis01】Redis常用命令</h3><h4 id="一、基础命令"><a href="#一、基础命令" class="headerlink" title="一、基础命令"></a>一、基础命令</h4><h5 id="1、ping（心跳命令）"><a href="#1、ping（心跳命令）" class="headerlink" title="1、ping（心跳命令）"></a>1、ping（心跳命令）</h5><blockquote>
+<p>键入<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=ping命令&amp;spm=1001.2101.3001.7020">ping命令</a>，若看到PONG响应，则说明客户端与Redis的连接时正常的。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/32dcc443c218f32758e4f729c47b8016.png" alt="image-20230408211628706"></p>
+<h5 id="2、get-set（读写键值命令）"><a href="#2、get-set（读写键值命令）" class="headerlink" title="2、get/set（读写键值命令）"></a>2、get/set（读写键值命令）</h5><blockquote>
+<p><code>set key value</code> 会将指定 <code>key-value</code>写入到DB。<code>get key</code>则会读取指定key的value值。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/59bac73cffda3d40ef5a7c8584a34049.png" alt="image-20230408211730487"></p>
+<h5 id="3、select（切换数据库）"><a href="#3、select（切换数据库）" class="headerlink" title="3、select（切换数据库）"></a>3、select（切换数据库）</h5><blockquote>
+<p>redis默认有 16 个数据库。这个在 Redis Desktop Manager（RDM）图形客户端中可以直 观地看到。默认使用的是 0 号 DB，可以通过 select db 索引来切换 DB。如图，切换到1号DB：</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/10dbc21656582a300780f7cb8eafc5dc.png" alt="image-20230408211802887"></p>
+<h5 id="4、dbsize（查看key数量）"><a href="#4、dbsize（查看key数量）" class="headerlink" title="4、dbsize（查看key数量）"></a>4、dbsize（查看key数量）</h5><blockquote>
+<p>dbsize 命令可以查看当前数据库中 key 的数量。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/d3624f167254ce7fced4ba8a1ddf8faf.png" alt="image-20230408211945404"></p>
+<h5 id="5、flushdb（删除当前库中所有数据）"><a href="#5、flushdb（删除当前库中所有数据）" class="headerlink" title="5、flushdb（删除当前库中所有数据）"></a>5、flushdb（删除当前库中所有数据）</h5><blockquote>
+<p>清楚当前DB中的所有数据，不影响其他DB。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/83c23c160d5815a8e1ebf49a92723bce.png" alt="image-20230408212221534"></p>
+<h5 id="6、flushall（删除所有DB中的数据）"><a href="#6、flushall（删除所有DB中的数据）" class="headerlink" title="6、flushall（删除所有DB中的数据）"></a>6、flushall（删除所有DB中的数据）</h5><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/6662b09e86dd67cb38f542aee6472256.png" alt="image-20230408212320609"></p>
+<h4 id="二、Key-相关操作命令"><a href="#二、Key-相关操作命令" class="headerlink" title="二、Key 相关操作命令"></a>二、Key 相关操作命令</h4><h5 id="1、keys"><a href="#1、keys" class="headerlink" title="1、keys"></a>1、keys</h5><blockquote>
+<p>格式：KEYS pattern</p>
+<p>功能：查找所有符合给定模式 pattern 的 key，pattern 为正则表达式。</p>
+<p>说明：KEYS 的速度非常快，但在一个大的数据库中使用它可能会阻塞当前服务器的服务。所以生产环境中一般不使用该命令，而使用 scan 命令代替。</p>
+</blockquote>
+<p>如图：查看所有模式与查看所有开头结尾为‘a’的模式</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/9f9f2957d788316cd87d3574db02431b.png" alt="image-20230408213343952"></p>
+<h5 id="2、exists"><a href="#2、exists" class="headerlink" title="2、exists"></a>2、exists</h5><blockquote>
+<p>格式：EXISTS key</p>
+<p>功能：检查给定 key 是否存在。</p>
+<p>说明：若 key 存在，返回 1 ，否则返回 0 。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/3d94c713ffdcb85c2ccdeb6cf019460e.png" alt="image-20230408213455338"></p>
+<h5 id="3、del"><a href="#3、del" class="headerlink" title="3、del"></a>3、del</h5><blockquote>
+<p>格式：DEL key [key …]</p>
+<p>功能：删除给定的一个或多个 key 。不存在的 key 会被忽略。</p>
+<p>说明：返回被删除 key 的数量。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/38216be619a3b53d96d94090f5344651.png" alt="image-20230408213541854"></p>
+<h5 id="4、rename"><a href="#4、rename" class="headerlink" title="4、rename"></a>4、rename</h5><blockquote>
+<p>l 格式：RENAME key newkey</p>
+<p>l 功能：将 key 改名为 newkey。</p>
+<p>l 说明：当 key 和 newkey 相同，或者 key 不存在时，返回一个错误。当 newkey 已经存在时， RENAME 命令将覆盖旧值。改名成功时提示 OK ，失败时候返回一个错误。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/24000662100b495ab7080a64b0cd7011.png" alt="image-20230408213806672"></p>
+<h5 id="5、move"><a href="#5、move" class="headerlink" title="5、move"></a>5、move</h5><blockquote>
+<p>l 格式：MOVE key db</p>
+<p>l 功能：将当前数据库的 key 移动到给定的数据库 db 当中。</p>
+<p>l 说明：如果当前数据库(源数据库)和给定数据库(目标数据库)有相同名字的给定 key ，或者 key 不存在于当前数据库，那么 MOVE 没有任何效果。移动成功返回 1 ，失败则返回 0 。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/65f8b441914f44583214e5160caee0f6.png" alt="image-20230408213945562"></p>
+<h5 id="6、type"><a href="#6、type" class="headerlink" title="6、type"></a>6、type</h5><blockquote>
+<p>l 格式：TYPE key</p>
+<p>l 功能：返回 key 所储存的值的类型。</p>
+<p>l 说明：返回值有以下六种</p>
+<p> none (key 不存在)</p>
+<p> <a target="_blank" rel="noopener" href="https://marketing.csdn.net/p/3127db09a98e0723b83b2914d9256174?pId=2782&amp;utm_source=glcblog&amp;spm=1001.2101.3001.7020">string</a> (字符串)</p>
+<p> list (列表)</p>
+<p> set (集合)</p>
+<p> zset (有序集)</p>
+<p> hash (哈希表)</p>
+</blockquote>
+<h5 id="7、expire-pexpire"><a href="#7、expire-pexpire" class="headerlink" title="7、expire/pexpire"></a>7、expire/pexpire</h5><blockquote>
+<p>l 格式：EXPIRE key seconds</p>
+<p>l 功能：为给定 key 设置生存时间。当 key 过期时(生存时间为 0)，它会被自动删除。 expire 的时间单位为秒，pexpire 的时间单位为毫秒。在 Redis 中，带有生存时间的 key被称为“易失”(volatile)。</p>
+<p>l 说明：生存时间设置成功返回 1。若 key 不存在时返回 0 。rename 操作不会改变 key的生存时间。</p>
+</blockquote>
+<h5 id="8、ttl-pttl"><a href="#8、ttl-pttl" class="headerlink" title="8、ttl/pttl"></a>8、ttl/pttl</h5><blockquote>
+<p>格式：TTL key</p>
+<p>功能：TTL, time to live，返回给定 key 的剩余生存时间。</p>
+<p>说明：其返回值存在三种可能：</p>
+<p> 1/当 key 不存在时，返回 -2 。</p>
+<p> 2/当 key 存在但没有设置剩余生存时间时，返回 -1 。</p>
+<p> 3/否则，返回 key 的剩余生存时间。ttl 命令返回的时间单位为秒，而 pttl 命令返回的时间单位为毫秒。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/7238c5d4bdc3f7c447d65f90d7edcddd.png" alt="image-20230408214503144"></p>
+<h5 id="9、persist"><a href="#9、persist" class="headerlink" title="9、persist"></a>9、persist</h5><blockquote>
+<p>l 格式：PERSIST key</p>
+<p>l 功能：去除给定 key 的生存时间，将这个 key 从“易失的”转换成“持久的”。</p>
+<p>l 说明：当生存时间移除成功时，返回 1；若 key 不存在或 key 没有设置生存时间，则返回 0。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/88a26a9d3f0e71088f0ddf566a3d56d6.png" alt="image-20230408214631492"></p>
+<h5 id="10、randomkey"><a href="#10、randomkey" class="headerlink" title="10、randomkey"></a>10、randomkey</h5><blockquote>
+<p>l 格式：RANDOMKEY</p>
+<p>l 功能：从当前数据库中随机返回(不删除)一个 key。</p>
+<p>l 说明：当数据库不为空时，返回一个 key。当数据库为空时，返回 nil。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/79070ea76422bd1758c4100108fcb613.png" alt="image-20230408214740825"></p>
+<h5 id="11、scan"><a href="#11、scan" class="headerlink" title="11、scan"></a>11、scan</h5><ul>
+<li><p>格式：SCAN cursor [MATCH pattern] [COUNT count] [TYPE type]</p>
+</li>
+<li><p>功能：用于迭代数据库中的数据库键。其各个选项的意义为：</p>
+<ul>
+<li>cursor：本次迭代开始的游标。</li>
+<li>pattern ：本次迭代要匹配的 key 的模式。</li>
+<li>count ：本次迭代要从数据集里返回多少元素，默认值为 10 。</li>
+<li>type：本次迭代要返回的value 的类型，默认为所有类型。</li>
+</ul>
+<blockquote>
+<p>SCAN 命令是一个基于游标 cursor 的迭代器：SCAN 命令每次被调用之后，都会向用户返回返回一个包含两个元素的数组， 第一个元素是用于进行下一次迭代的新游标，而第二个元素则是一个数组， 这个数组中包含了所有被迭代的元素。用户在下次迭代时需要使用这个新游标作为 SCAN 命令的游标参数，以此来延续之前的迭代过程。当 SCAN 命令的游标参数被设置为 0 时，服务器将开始一次新的迭代。如果新游标返回 0表示迭代已结束。</p>
+</blockquote>
+</li>
+<li><p>说明：使用间断的、负数、超出范围或者其他非正常的游标来执行增量式迭代不会造成服务器崩溃。</p>
+<blockquote>
+<p>当数据量很大时，count 的数量的指定可能会不起作用，Redis 会自动调整每次的遍历数目。由于 scan 命令每次执行都只会返回少量元素，所以该命令可以用于生产环境，而不会出现像 KEYS 命令带来的服务器阻塞问题。</p>
+<p>增量式迭代命令所使用的算法只保证在数据集的大小有界的情况下迭代才会停止，换句话说，如果被迭代数据集的大小不断地增长的话，增量式迭代命令可能永远也无法完成一次完整迭代。即当一个数据集不断地变大时，想要访问这个数据集中的所有元素就需要做越来越多的工作， 能否结束一个迭代取决于用户执行迭代的速度是否比数据集增长的速度更快。</p>
+</blockquote>
+</li>
+<li><p>相关命令：另外还有 3 个 scan 命令用于对三种类型的 value 进行遍历。</p>
+<ul>
+<li>hscan：属于 Hash 型 Value 操作命令集合，用于遍历当前 db 中指定 Hash 表的所有 field-value 对。</li>
+<li>sscan：属于 Set 型Value 操作命令集合，用于遍历当前 db 中指定 set 集合的所有元素</li>
+<li>zscan：属于 ZSet 型 Value 操作命令集合，用于遍历当前 db 中指定有序集合的所有元素（数值与元素值）</li>
+</ul>
+</li>
+</ul>
+<h4 id="三、String型Value操作命令"><a href="#三、String型Value操作命令" class="headerlink" title="三、String型Value操作命令"></a>三、String型Value操作命令</h4><p>Redis 存储数据的 Value 可以是一个 String 类型数据。String 类型的Value 是 Redis 中最基本，最常见的类型。String 类型的 Value 中可以存放任意数据，包括数值型，甚至是二进制的图片、音频、视频、序列化对象等。一个 String 类型的 Value 最大是 512M 大小。</p>
+<h5 id="1、set"><a href="#1、set" class="headerlink" title="1、set"></a>1、set</h5><blockquote>
+<p>格式：SET key value [EX seconds | PX milliseconds] [NX|XX]</p>
+<p>功能：SET 除了可以直接将 key 的值设为 value 外，还可以指定一些参数。</p>
+<ul>
+<li>EX seconds：为当前 key 设置过期时间，单位秒。等价于 SETEX 命令。</li>
+<li>PX milliseconds：为当前 key 设置过期时间，单位毫秒。等价于 PSETEX 命令。</li>
+<li>NX：指定的 key 不存在才会设置成功，用于添加指定的 key。等价于 SETNX 命令。</li>
+<li>XX：指定的 key 必须存在才会设置成功，用于更新指定key 的value。</li>
+</ul>
+<p>说明：如果value 字符串中带有空格，则该字符串需要使用双引号或单引号引起来，否则会认为 set 命令的参数数量不正确，报错。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/904e39ffac1d514a2c5e35090e151f3e.png" alt="image-20230408215404893"></p>
+<h5 id="2、setex-psetex"><a href="#2、setex-psetex" class="headerlink" title="2、setex/psetex"></a>2、setex/psetex</h5><blockquote>
+<p>格式：SETEX/PSETEX key seconds value</p>
+<p>功能：set expire，其不仅为 key 指定了value，还为其设置了生存时间。setex 的单位为秒，psetex 的单位为毫秒。</p>
+<p>说明：如果 key 已经存在， 则覆写旧值。该命令类似于以下两个命令，不同之处是， SETEX 是一个原子性操作，关联值和设置生存时间两个动作会在同一时间内完成，该命令在 Redis 用作缓存时，非常实用。</p>
+<ul>
+<li>SET key value</li>
+<li>EXPIRE key seconds # 设置生存时间</li>
+</ul>
+</blockquote>
+<p>如下图两条指令作用相同：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/9ce5b78d3b15e6157a2e8304955cec5d.png" alt="image-20230408215652794"></p>
+<h5 id="3、setnx"><a href="#3、setnx" class="headerlink" title="3、setnx"></a>3、setnx</h5><blockquote>
+<p>l 格式：SETNX key value</p>
+<p>l 功能：SET if Not eXists，将 key 的值设为 value ，当且仅当 key 不存在。若给定的 key</p>
+<p>已经存在，则 SETNX 不做任何动作。成功，返回 1，否则，返回 0。</p>
+<p>l 说明：该命令等价于 <code>set key value nx</code></p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/833c5455fa2378e144298e3ed43d32e0.png" alt="image-20230408215816215"></p>
+<h5 id="4、getset"><a href="#4、getset" class="headerlink" title="4、getset"></a>4、getset</h5><blockquote>
+<p>格式：GETSET key value</p>
+<p>功能：将给定 key 的值设为 value ，并返回 key 的旧值。</p>
+<p>说明：当 key 存在但不是字符串类型时，返回一个错误；当 key 不存在时，返回 nil 。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/17e29464af446156a242bc67f0d3af03.png" alt="image-20230408220000780"></p>
+<h5 id="5、mset-msetnx"><a href="#5、mset-msetnx" class="headerlink" title="5、mset/msetnx"></a>5、mset/msetnx</h5><blockquote>
+<p>格式：MSET/MSETNX key value [key value …]</p>
+<p>功能：同时设置一个或多个 key-value 对。</p>
+<p>说明：如果某个给定 key 已经存在，那么 MSET 会用新值覆盖原来的旧值，如果这不 是你所希望的效果，请考虑使用 MSETNX 命令：它只会在所有给定 key 都不存在的情 况下进行设置操作。MSET/MSETNX 是一个原子性(atomic)操作，所有给定 key 都会在同 一时间内被设置，某些给定 key 被更新而另一些给定 key 没有改变的情况不可能发生。该命令永不失败。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/3707d2ebbcb7f310b33b02837daa8212.png" alt="image-20230408220130792"></p>
+<h5 id="6、mget"><a href="#6、mget" class="headerlink" title="6、mget"></a>6、mget</h5><blockquote>
+<p>格式：MGET key [key …]</p>
+<p>功能：返回所有(一个或多个)给定 key 的值。</p>
+<p>说明：如果给定的 key 里面，有某个 key 不存在，那么这个 key 返回特殊值 nil 。因此，该命令永不失败。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/c551cb0b61dd0e43ee8a53ac60b8b31b.png" alt="image-20230408220218797"></p>
+<h5 id="7、append"><a href="#7、append" class="headerlink" title="7、append"></a>7、append</h5><blockquote>
+<p>格式：APPEND key value</p>
+<p>功能：如果 key 已经存在并且是一个字符串， APPEND 命令将 value 追加到 key 原来的值的末尾。如果 key 不存在， APPEND 就简单地将给定 key 设为 value ，就像执行 SET key value 一样。</p>
+<p>说明：追加 value 之后， key 中字符串的长度。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/e4981ce3306a0198fd183605e2ed8451.png" alt="image-20230408220359590"></p>
+<h5 id="8、incr-decr"><a href="#8、incr-decr" class="headerlink" title="8、incr/decr"></a>8、incr/decr</h5><blockquote>
+<p>格式：INCR key 或 DECR key</p>
+<p>功能：increment，自动递增。将 key 中存储的数字值增一。decrement，自动递减。将 key 中存储的数字值减一。</p>
+<p>说明：如果 key 不存在，那么 key 的值会先被初始化为 0，然后再执行增一/减一操作。如果值不能表示为数字，那么返回一个错误提示。如果执行正确，则返回增一/减一后的值。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/98d04f6f902aa069df4867bf50f378b4.png" alt="image-20230408220515890"></p>
+<h5 id="9、incrby-decrby"><a href="#9、incrby-decrby" class="headerlink" title="9、incrby/decrby"></a>9、incrby/decrby</h5><blockquote>
+<p>格式：INCRBY key increment 或 DECRBY key decrement</p>
+<p>功能：将 key 中存储的数字值增加/减少指定的数值，这个数值只能是整数，可以是负数，但不能是小数。</p>
+<p>说明：如果 key 不存在，那么 key 的值会先被初始化为 0，然后再执行增/减操作。如果值不能表示为数字，那么返回一个错误提示。如果执行正确，则返回增/减后的值。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/d37b718d65aba13467ae4bf2e2f97c3e.png" alt="image-20230408220620950"></p>
+<h5 id="10、incrbyfloat"><a href="#10、incrbyfloat" class="headerlink" title="10、incrbyfloat"></a>10、incrbyfloat</h5><blockquote>
+<p>格式：INCRBYFLOAT key increment</p>
+<p>功能：为 key 中所储存的值加上浮点数增量 increment 。</p>
+<p>说明：与之前的说明相同。没有 decrbyfloat 命令，但 increment 为负数可以实现减操作效果。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/6e706c773a54b82010a58523d8fdcc9f.png" alt="image-20230408220721017"></p>
+<h5 id="11、strlen"><a href="#11、strlen" class="headerlink" title="11、strlen"></a>11、strlen</h5><blockquote>
+<p>格式：STRLEN key</p>
+<p>功能：返回 key 所储存的字符串值的长度。</p>
+<p>说明：当 key 储存的不是字符串值时，返回一个错误；当 key 不存在时，返回 0 。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/c32699e48de7aa7d67d04a488280aba2.png" alt="image-20230408220812700"></p>
+<h5 id="12、getrange"><a href="#12、getrange" class="headerlink" title="12、getrange"></a>12、getrange</h5><blockquote>
+<p>格式：GETRANGE key start end</p>
+<p>功能：返回 key 中字符串值的子字符串，字符串的截取范围由 start 和 end 两个偏移量决定，包括 start 和 end 在内。</p>
+<p>说明：end 必须要比 start 大。支持负数偏移量，表示从字符串最后开始计数，-1 表示最后一个字符，-2 表示倒数第二个，以此类推。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/a66b2e453765ef5979c5e2efa2258931.png" alt="image-20230408220941085"></p>
+<h5 id="13、setrange"><a href="#13、setrange" class="headerlink" title="13、setrange"></a>13、setrange</h5><blockquote>
+<p>格式：SETRANGE key offset value</p>
+<p>功能：用 value 参数替换给定 key 所储存的字符串值 str，从偏移量 offset 开始。</p>
+<p>说明：当 offset 值大于 str 长度时，中间使用零字节\x00 填充，即 0000 0000 字节填充；对于不存在的 key 当作空串处理。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/a0e024fe97e923880257651cc1029f02.png" alt="image-20230408221127133"></p>
+<h5 id="14、位操作命令"><a href="#14、位操作命令" class="headerlink" title="14、位操作命令"></a>14、位操作命令</h5><blockquote>
+<p>名称中包含 BIT 的命令，都是对二进制位的操作命令，例如，setbit、getbit、bitcount、bittop、bitfield，这些命令不常用。</p>
+</blockquote>
+<h5 id="15、典型应用场景"><a href="#15、典型应用场景" class="headerlink" title="15、典型应用场景"></a>15、典型应用场景</h5><p>Value 为 String 类型的应用场景很多，这里仅举这种典型应用场景的例子：</p>
+<ul>
+<li><p>数据缓存：Redis 作为数据缓存层，MySQL 作为数据存储层。应用服务器首先从 Redis 中获取数据，如果缓存层中没有，则从MySQL 中获取后先存入缓存层再返回给应用服务器。</p>
+</li>
+<li><p>计数器：在 Redis 中写入一个 value 为数值型的 key 作为平台计数器、视频播放计数器等。每个有效客户端访问一次，或视频每播放一次，都是直接修改 Redis 中的计数器，然后再以异步方式持久化到其它数据源中，例如持久化到 MySQL。</p>
+</li>
+<li><p>共享Session：对于一个分布式应用系统，如果将类似用户登录信息这样的 Session 数据保存在提供登录服务的服务器中，那么如果用户再次提交像收藏、支付等请求时可能会出现问题：在提供收藏、支付等服务的服务器中并没有该用户的 Session 数据，从而导致该用户需要重新登录。对于用户来说，这是不能接受的。此时，可以将系统中所有用户的 Session 数据全部保存到 Redis 中，用户在提交新的请求后，系统先从Redis 中查找相应的Session 数据，如果存在，则再进行相关操作，否则跳转到登录页面。这样就不会引发“重新登录”问题。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/22772d9be4efd77c382ddaa868860e98.png" alt="image-20230408221723064"></p>
+</li>
+<li><p>限速器：现在很多平台为了防止 DoS（Denial of Service，拒绝服务）攻击，一般都会限制一个 IP不能在一秒内访问超过 n 次。而 Redis 可以可以结合 key 的过期时间与 incr 命令来完成限速功能，充当限速器。注意，其无法防止 DDoS（Distributed Denial of Service，分布式拒绝服务）攻击。</p>
+</li>
+</ul>
+<h4 id="四、Hash型Value操作命令"><a href="#四、Hash型Value操作命令" class="headerlink" title="四、Hash型Value操作命令"></a>四、Hash型Value操作命令</h4><p>Redis 存储数据的 Value 可以是一个 Hash 类型。Hash 类型也称为 Hash 表、字典等。</p>
+<blockquote>
+<p>Hash 表就是一个映射表 Map，也是由键-值对构成，为了与整体的 key 进行区分，这里的键称为 field，值称为 value。注意，Redis 的 Hash 表中的 field-value 对均为 String 类型。</p>
+</blockquote>
+<h5 id="1、hset"><a href="#1、hset" class="headerlink" title="1、hset"></a>1、hset</h5><blockquote>
+<p>格式：HSET key field value</p>
+<p>功能：将哈希表 key 中的域 field 的值设为 value 。</p>
+<p>说明：如果 key 不存在，一个新的哈希表被创建并进行 <a target="_blank" rel="noopener" href="http://redisdoc.com/hash/hset.html#hset">HSET</a> 操作。如果域 field 已经存在于哈希表中，旧值将被覆盖。如果 field 是哈希表中的一个新建域，并且值设置成功，返回 1 。如果哈希表中域 field 已经存在且旧值已被新值覆盖，返回 0 。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/01e2a642037d70c7a2309a611c1edd74.png" alt="image-20230409212134039"></p>
+<h5 id="2、hget"><a href="#2、hget" class="headerlink" title="2、hget"></a>2、hget</h5><blockquote>
+<p>格式：HGET key field</p>
+<p>功能：返回哈希表 key 中给定域 field 的值。</p>
+<p>说明：当给定域不存在或是给定 key 不存在时，返回 nil 。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/2f6e5bcb9108c83212435dc03b3a5df1.png" alt="image-20230409224311370"></p>
+<h5 id="3、hmset"><a href="#3、hmset" class="headerlink" title="3、hmset"></a>3、hmset</h5><blockquote>
+<p>格式：HMSET key field value [field value …]</p>
+<p>功能：同时将多个 field-value (域-值)对设置到哈希表 key 中。</p>
+<p>说明：此命令会覆盖哈希表中已存在的域。如果 key 不存在，一个空哈希表被创建并执行 HMSET 操作。如果命令执行成功，返回 OK 。当 key 不是哈希表(hash)类型时，返回一个错误。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/9e99662feee1ec96f6a6abf779e838be.png" alt="image-20230409224637980"></p>
+<h5 id="4、hmget"><a href="#4、hmget" class="headerlink" title="4、hmget"></a>4、hmget</h5><blockquote>
+<p>格式：HMGET key field [field …]</p>
+<p>功能：按照给出顺序返回哈希表 key 中一个或多个域的值。</p>
+<p>说明：如果给定的域不存在于哈希表，那么返回一个 nil 值。因为不存在的 key 被当作一个空哈希表来处理，所以对一个不存在的 key 进行 HMGET 操作将返回一个只带有 nil 值的表。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/de76089f29bd9ab05deae9297d5997ca.png" alt="image-20230409224959688"></p>
+<h5 id="5、hgetall"><a href="#5、hgetall" class="headerlink" title="5、hgetall"></a>5、hgetall</h5><blockquote>
+<p>格式：HGETALL key</p>
+<p>功能：返回哈希表 key 中所有的域和值。</p>
+<p>说明：在返回值里，紧跟每个域名(field name)之后是域的值(value)，所以返回值的长度是哈希表大小的两倍。若 key 不存在，返回空列表。若 key 中包含大量元素，则该命令可能会阻塞 Redis 服务。所以生产环境中一般不使用该命令，而使用 hscan 命令代替。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/94da323983eaf4b8cf977641a59f2dce.png" alt="image-20230409225114987"></p>
+<h5 id="6、hsetnx"><a href="#6、hsetnx" class="headerlink" title="6、hsetnx"></a>6、hsetnx</h5><blockquote>
+<p>格式：HSETNX key field value</p>
+<p>功能：将哈希表 key 中的域 field 的值设置为 value ，当且仅当域 field 不存在。</p>
+<p>说明：若域 field 已经存在，该操作无效。如果 key 不存在，一个新哈希表被创建并执行 HSETNX 命令。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/361f13ab18a791a5ce13ab50d3863de9.png" alt="image-20230409225248298"></p>
+<h5 id="7、hdel"><a href="#7、hdel" class="headerlink" title="7、hdel"></a>7、hdel</h5><blockquote>
+<p>格式：HDEL key field [field …]</p>
+<p>功能：删除哈希表 key 中的一个或多个指定域，不存在的域将被忽略。</p>
+<p>说明：返回被成功移除的域的数量，不包括被忽略的域。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/d5ba73054150475a7b77d45dfbbc8ec0.png" alt="image-20230409225403125"></p>
+<h5 id="8、hexists"><a href="#8、hexists" class="headerlink" title="8、hexists"></a>8、hexists</h5><blockquote>
+<p>格式：HEXISTS key field</p>
+<p>功能：查看哈希表 key 中给定域 field 是否存在。</p>
+<p>说明：如果哈希表含有给定域，返回 1 。如果不含有给定域，或 key 不存在，返回 0 。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/7ae8a279fbaa6d8ca8b518ff879a7800.png" alt="image-20230409225550040"></p>
+<h5 id="9、hincrby-hincrbyfloat"><a href="#9、hincrby-hincrbyfloat" class="headerlink" title="9、hincrby/hincrbyfloat"></a>9、hincrby/hincrbyfloat</h5><blockquote>
+<p>格式：HINCRBY key field increment</p>
+<p>功能：为哈希表 key 中的域 field 的值加上增量 increment 。hincrby 命令只能增加整数值，而 hincrbyfloat 可以增加小数值。</p>
+<p>说明：增量也可以为负数，相当于对给定域进行减法操作。如果 key 不存在，一个新的哈希表被创建并执行 HINCRBY 命令。如果域 field 不存在，那么在执行命令前，域的值被初始化为 0。对一个储存字符串值的域 field 执行 HINCRBY 命令将造成一个错误。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/bb36ec6a039c4f7bc76d973904ae1f2e.png" alt="image-20230409230136983"></p>
+<h5 id="10、hkeys-hvals"><a href="#10、hkeys-hvals" class="headerlink" title="10、hkeys/hvals"></a>10、hkeys/hvals</h5><blockquote>
+<p>格式：HKEYS key 或 HVALS key</p>
+<p>功能：返回哈希表 key 中的所有域/值。</p>
+<p>说明：当 key 不存在时，返回一个空表。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/90c577c02f3f22ff887258883e26a9ec.png" alt="image-20230409230353847"></p>
+<h5 id="11、hlen"><a href="#11、hlen" class="headerlink" title="11、hlen"></a>11、hlen</h5><blockquote>
+<p>格式：HLEN key</p>
+<p>功能：返回哈希表 key 中域的数量。</p>
+<p>说明：当 key 不存在时，返回 0 。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/f7f3e0077438f2807da15d848cd1b472.png" alt="image-20230409230704382"></p>
+<h5 id="12、hstrlen"><a href="#12、hstrlen" class="headerlink" title="12、hstrlen"></a>12、hstrlen</h5><blockquote>
+<p>格式：HSTRLEN key field</p>
+<p>功能：返回哈希表 key 中， 与给定域 field 相关联的值的字符串长度（string length）。</p>
+<p>说明：如果给定的键或者域不存在， 那么命令返回 0 。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/f4a16e9a39351e10da1e5af3aea09229.png" alt="image-20230409230758278"></p>
+<h5 id="13、应用场景"><a href="#13、应用场景" class="headerlink" title="13、应用场景"></a>13、应用场景</h5><blockquote>
+<p>Hash 型 Value 非常适合存储对象数据。key 为对象名称，value 为描述对象属性的 Map，对对象属性的修改在Redis 中就可直接完成。其不像String 型 Value 存储对象，那个对象是序列化过的，例如序列化为 JSON 串，对对象属性值的修改需要先反序列化为对象后再修改，修改后再序列化为JSON 串后写入到 Redis。</p>
+</blockquote>
+<h4 id="五、List型Value操作命令"><a href="#五、List型Value操作命令" class="headerlink" title="五、List型Value操作命令"></a>五、List型Value操作命令</h4><p>Redis 存储数据的 Value 可以是一个 String 列表类型数据。即该列表中的每个元素均为 String 类型数据。列表中的数据会按照插入顺序进行排序。不过，该列表的底层实际是一个无头节点的双向链表，所以对列表表头与表尾的操作性能较高，但对中间元素的插入与删除的操作的性能相对较差。</p>
+<h5 id="1、lpush-rpush"><a href="#1、lpush-rpush" class="headerlink" title="1、lpush/rpush"></a>1、lpush/rpush</h5><blockquote>
+<p>格式：LPUSH key value [value …] 或 RPUSH key value [value …]</p>
+<p>功能：将一个或多个值 value 插入到列表 key 的表头/表尾（表头在左表尾在右）</p>
+<p>说明：如果有多个 value 值，对于 lpush 来说，各个 value 会按从左到右的顺序依次插入到表头；对于 rpush 来说，各个 value 会按从左到右的顺序依次插入到表尾。如果 key不存在，一个空列表会被创建并执行操作。当 key 存在但不是列表类型时，返回一个错误。执行成功时返回列表的长度。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/f1b9a5e7402064abcce5732a954a2131.png" alt="image-20230410195544787"></p>
+<h5 id="2、llen"><a href="#2、llen" class="headerlink" title="2、llen"></a>2、llen</h5><blockquote>
+<p>格式：LLEN key</p>
+<p>功能：返回列表 key 的长度。</p>
+<p>说明：如果 key 不存在，则 key 被解释为一个空列表，返回 0 。如果 key 不是列表类型，返回一个错误。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/73052fa035f45d2be47205cecdb1abd4.png" alt="image-20230410195647719"></p>
+<h5 id="3、lindex"><a href="#3、lindex" class="headerlink" title="3、lindex"></a>3、lindex</h5><blockquote>
+<p>格式：LINDEX key index</p>
+<p>功能：返回列表 key 中，下标为 index 的元素。列表从 0 开始计数。</p>
+<p>说明：如果 index 参数的值不在列表的区间范围内(out of range)，返回 nil 。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/a09c8dcfa56ffb05ac5877291446df30.png" alt="image-20230410195918800"></p>
+<h5 id="4、lset"><a href="#4、lset" class="headerlink" title="4、lset"></a>4、lset</h5><blockquote>
+<p>格式：LSET key index value</p>
+<p>功能：将列表 key 下标为 index 的元素的值设置为 value 。</p>
+<p>说明：当 index 参数超出范围，或对一个空列表（key 不存在）进行 LSET 时，返回一个错误。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/57f8a5a2175cf42ef246a7a6c05f3579.png" alt="image-20230410200147980"></p>
+<h5 id="5、lrange"><a href="#5、lrange" class="headerlink" title="5、lrange"></a>5、lrange</h5><blockquote>
+<p>格式：LRANGE key start stop</p>
+<p>功能：返回列表 key 中指定区间[start, stop]内的元素，即包含两个端点。</p>
+<p>说明：List 的下标从 0 开始，即以 0 表示列表的第一个元素，以 1 表示列表的第二个元素，以此类推。也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。超出范围的下标值不会引起错误。如果 start 下标比列表的最大下标 还要大，那么 LRANGE 返回一个空列表。如果 stop 下标比最大下标还要大，Redis 将 stop 的值设置为最大下标。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/4d2a4435e1be05b6f98825bb79ae23c1.png" alt="image-20230410200259538"></p>
+<h5 id="6、lpushx-rpushx"><a href="#6、lpushx-rpushx" class="headerlink" title="6、lpushx/rpushx"></a>6、lpushx/rpushx</h5><blockquote>
+<p>格式：LPUSHX key value 或 RPUSHX key value</p>
+<p>功能：将值 value 插入到列表 key 的表头/表尾，当且仅当 key 存在并且是一个列表。</p>
+<p>说明：当 key 不存在时，命令什么也不做。若执行成功，则输出表的长度。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/cbf39de196686f92c0b68221a128e3df.png" alt="image-20230410200413604"></p>
+<h5 id="7、linsert"><a href="#7、linsert" class="headerlink" title="7、linsert"></a>7、linsert</h5><blockquote>
+<p>格式：LINSERT key BEFORE|AFTER pivot value</p>
+<p>功能：将值 value 插入到列表 key 当中，位于元素 pivot 之前或之后。</p>
+<p>说明：当 pivot 元素不存在于列表中时，不执行任何操作，返回-1；当 key 不存在时， key 被视为空列表，不执行任何操作，返回 0；如果 key 不是列表类型，返回一个错误；如果命令执行成功，返回插入操作完成之后，列表的长度。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/5594b134f390e6c40154beec58a704bf.png" alt="image-20230410200645171"></p>
+<h5 id="8、lpop-rpop"><a href="#8、lpop-rpop" class="headerlink" title="8、lpop/rpop"></a>8、lpop/rpop</h5><blockquote>
+<p>格式：LPOP key [count] 或 RPOP key [count]</p>
+<p>功能：从列表 key 的表头/表尾移除 count 个元素，并返回移除的元素。count 默认值 1</p>
+<p>说明：当 key 不存在时，返回 nil</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-uPdTzGAT-1681219408332)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230410200826128.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230410200826128.png</a>)]</p>
+<h5 id="9、blpop-brpop"><a href="#9、blpop-brpop" class="headerlink" title="9、blpop/brpop"></a>9、blpop/brpop</h5><blockquote>
+<p>格式：BLPOP key [key …] timeout 或 BRPOP key [key …] timeout</p>
+<p>功能：BLPOP/BRPOP 是列表的阻塞式(blocking)弹出命令。它们是 LPOP/RPOP 命令的阻塞版本，当给定列表内没有任何元素可供弹出的时候，连接将被 BLPOP/BRPOP 命令阻塞，直到等待 timeout 超时或发现可弹出元素为止。当给定多个 key 参数时，按参数 key的先后顺序依次检查各个列表，弹出第一个非空列表的头元素。timeout 为阻塞时长，单位为秒，其值若为 0，则表示只要没有可弹出元素，则一直阻塞。</p>
+<p>说明：假如在指定时间内没有任何元素被弹出，则返回一个 nil 和等待时长。反之，返回一个含有两个元素的列表，第一个元素是被弹出元素所属的 key ，第二个元素是被弹出元素的值。</p>
+</blockquote>
+<p>该指令详细介绍：<a target="_blank" rel="noopener" href="https://www.modb.pro/db/13770">Redis每日一练(26)：BLPOP和BRPOP命令 - 墨天轮 (modb.pro)</a></p>
+<h5 id="10、rpoplpush"><a href="#10、rpoplpush" class="headerlink" title="10、rpoplpush"></a>10、rpoplpush</h5><blockquote>
+<p>格式：RPOPLPUSH source destination</p>
+<p>功能：命令 RPOPLPUSH 在一个原子时间内，执行以下两个动作：</p>
+<ul>
+<li>将列表 source 中的最后一个元素(尾元素)弹出，并返回给客户端。</li>
+<li>将 source 弹出的元素插入到列表 destination ，作为 destination 列表的的头元素。如果 source 不存在，值 nil 被返回，并且不执行其他动作。如果 source 和 destination 相同，则列表中的表尾元素被移动到表头，并返回该元素，可以把这种特殊情况视作列 表的旋转(rotation)操作。</li>
+</ul>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-GhNRwCLj-1681218054418)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230410201242354.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230410201242354.png</a>)]</p>
+<h5 id="11、brpoplpush"><a href="#11、brpoplpush" class="headerlink" title="11、brpoplpush"></a>11、brpoplpush</h5><blockquote>
+<p>格式：BRPOPLPUSH source destination timeout</p>
+<p>功能：BRPOPLPUSH 是 RPOPLPUSH 的阻塞版本，当给定列表 source 不为空时， BRPOPLPUSH 的表现和 RPOPLPUSH 一样。当列表 source 为空时， BRPOPLPUSH 命令将阻塞连接，直到等待超时，或有另一个客户端对 source 执行 LPUSH 或 RPUSH 命令为止。timeout 为阻塞时长，单位为秒，其值若为 0，则表示只要没有可弹出元素，则一直阻塞。</p>
+<p>说明：假如在指定时间内没有任何元素被弹出，则返回一个 nil 和等待时长。反之，返回一个含有两个元素的列表，第一个元素是被弹出元素的值，第二个元素是等待时长。</p>
+</blockquote>
+<p>如图：nums列表为空[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-fsjQiqNt-1681218054418)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230410201459060.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230410201459060.png</a>)]</p>
+<h5 id="12、lrem"><a href="#12、lrem" class="headerlink" title="12、lrem"></a>12、lrem</h5><blockquote>
+<p>格式：LREM key count value</p>
+<p>功能：根据参数 count 的值，移除列表中与参数 value 相等的元素。count 的值可以是以下几种：</p>
+<ul>
+<li>count &gt; 0 : 从表头开始向表尾搜索，移除与 value 相等的元素，数量为 count 。</li>
+<li>count &lt; 0 : 从表尾开始向表头搜索，移除与 value 相等的元素，数量为 count 的绝对值。</li>
+<li>count = 0 : 移除表中所有与 value 相等的值。</li>
+</ul>
+<p>说明：返回被移除元素的数量。当 key 不存在时， LREM 命令返回 0 ，因为不存在的 key 被视作空表(empty list)。</p>
+</blockquote>
+<p>图中lls列表不存在：</p>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-i1kldKKZ-1681218054419)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230410202033415.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230410202033415.png</a>)]</p>
+<h5 id="13、ltrim"><a href="#13、ltrim" class="headerlink" title="13、ltrim"></a>13、ltrim</h5><blockquote>
+<p>格式：LTRIM key start stop</p>
+<p>功能：对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。</p>
+<p>说明：下标(index)参数 start 和 stop 都以 0 为底，也就是说，以 0 表示列表的第一个元素，以 1 表示列表的第二个元素，以此类推。也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。当 key 不是列表类型时，返回一个错误。如果 start 下标比列表的最大下标 end ( LLEN list 减去 1 )还要大，或者 start &gt; stop ， LTRIM 返回一个空列表，因为 LTRIM 已经将整个列表清空。如果 stop 下标比 end 下标还要大，Redis 将 stop 的值设置为 end 。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ux6oXHR2-1681218054419)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230410202145481.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230410202145481.png</a>)]</p>
+<h5 id="14、应用场景"><a href="#14、应用场景" class="headerlink" title="14、应用场景"></a>14、应用场景</h5><p> Value 为 List 类型的应用场景很多，主要是通过构建不同的数据结构来实现相应的业务功能。这里仅对这些数据结构的实现方式进行总结，不举具体的例子。</p>
+<h6 id="（1）栈"><a href="#（1）栈" class="headerlink" title="（1）栈"></a>（1）栈</h6><p> 通过 lpush + lpop 可以实现栈数据结构效果：先进后出。通过 lpush 从列表左侧插入数据，通过 lpop 从列表左侧取出数据。当然，通过 rpush + rpop 也可以实现相同效果，只不过操作的是列表右侧。</p>
+<h6 id="（2）队列"><a href="#（2）队列" class="headerlink" title="（2）队列"></a>（2）队列</h6><p> 通过 lpush + rpop 可以实现队列数据结构效果：先进先出。通过 lpush 从列表左侧插入数据，通过 rpop 从列表右侧取出数据。当然，通过 rpush + lpop 也可以实现相同效果，只不过操作的方向正好相反。</p>
+<h6 id="（3）阻塞式消息队列"><a href="#（3）阻塞式消息队列" class="headerlink" title="（3）阻塞式消息队列"></a>（3）阻塞式消息队列</h6><p> 通过 lpush + brpop 可以实现阻塞式消息队列效果。作为消息生产者的客户端使用 lpush从列表左侧插入数据，作为消息消费者的多个客户端使用 brpop 阻塞式“抢占”列表尾部数据进行消费，保证了消费的负载均衡与<a target="_blank" rel="noopener" href="https://edu.csdn.net/cloud/sd_summit?utm_source=glcblog&amp;spm=1001.2101.3001.7020">高可用性</a>。brpop 的 timeout 设置为 0，表示只要没有数据可弹出，就永久阻塞。</p>
+<h6 id="（4）动态有限集合"><a href="#（4）动态有限集合" class="headerlink" title="（4）动态有限集合"></a>（4）动态有限集合</h6><p> 通过 lpush + ltrim 可以实现有限集合。通过lpush 从列表左侧向列表中添加数据，通过 ltrim 保持集合的动态有限性。像企业的末位淘汰、学校的重点班等动态管理，都可通过这种动态有限集合来实现。当然，通过rpush + ltrim 也可以实现相同效果，只不过操作的方向正好相反。</p>
+<h4 id="六、Set型Value操作命令"><a href="#六、Set型Value操作命令" class="headerlink" title="六、Set型Value操作命令"></a>六、Set型Value操作命令</h4><p>Redis 存储数据的 Value 可以是一个 Set 集合，且集合中的每一个元素均 String 类型。Set与 List 非常相似，但不同之处是 Set 中的元素具有无序性与不可重复性，而 List 则具有有序性与可重复性。</p>
+<p>Redis 中的 Set 集合与 Java 中的 Set 集合的实现相似，其底层都是value 为 null 的 hash表。也正因为此，才会引发无序性与不可重复性。</p>
+<h5 id="1、sadd"><a href="#1、sadd" class="headerlink" title="1、sadd"></a>1、sadd</h5><blockquote>
+<p>格式：SADD key member [member …]</p>
+<p>功能：将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member</p>
+<p>元素将被忽略。</p>
+<p>说明：假如 key 不存在，则创建一个只包含 member 元素作成员的集合。当 key 不是集合类型时，返回一个错误。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-HZ9aKIX8-1681218054420)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411192311511.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411192311511.png</a>)]</p>
+<h5 id="2、smembers"><a href="#2、smembers" class="headerlink" title="2、smembers"></a>2、smembers</h5><blockquote>
+<p>格式：SMEMBERS key</p>
+<p>功能：返回集合 key 中的所有成员。</p>
+<p>说明：不存在的 key 被视为空集合。若 key 中包含大量元素，则该命令可能会阻塞 Redis服务。所以生产环境中一般不使用该命令，而使用 sscan 命令代替。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/156b2c23858bfac2300216806a3c182d.png" alt="image-20230411192452736"></p>
+<h5 id="3、scard"><a href="#3、scard" class="headerlink" title="3、scard"></a>3、scard</h5><blockquote>
+<p>格式：SCARD key</p>
+<p>功能：返回 Set 集合的长度</p>
+<p>说明：当 key 不存在时，返回 0 。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/bee60a7abb7883202a6b84e04c38026c.png" alt="image-20230411192548168"></p>
+<h5 id="4、sismember"><a href="#4、sismember" class="headerlink" title="4、sismember"></a>4、sismember</h5><blockquote>
+<p>格式：SISMEMBER key member</p>
+<p>功能：判断 member 元素是否集合 key 的成员。</p>
+<p>说明：如果 member 元素是集合的成员，返回 1 。如果 member 元素不是集合的成员，或 key 不存在，返回 0 。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-By00Kd5B-1681218054422)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411192658608.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411192658608.png</a>)]</p>
+<h5 id="5、smove"><a href="#5、smove" class="headerlink" title="5、smove"></a>5、smove</h5><blockquote>
+<p>格式：SMOVE source destination member</p>
+<p>功能：将 member 元素从 source 集合移动到 destination 集合。</p>
+<p>说明：如果 source 集合不存在或不包含指定的 member 元素，则 SMOVE 命令不执行任何操作，仅返回 0 。否则， member 元素从 source 集合中被移除，并添加到 destination 集合中去，返回 1。当 destination 集合已经包含 member 元素时， SMOVE命令只是简单地将 source 集合中的 member 元素删除。当 source 或 destination 不是集合类型时，返回一个错误。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-HeIqQuCP-1681218054422)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411192802656.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411192802656.png</a>)]</p>
+<h5 id="6、srem"><a href="#6、srem" class="headerlink" title="6、srem"></a>6、srem</h5><blockquote>
+<p>格式：SREM key member [member …]</p>
+<p>功能：移除集合 key 中的一个或多个 member 元素，不存在的 member 元素会被忽略，且返回成功移除的元素个数。</p>
+<p>说明：当 key 不是集合类型，返回一个错误。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-tzXDyhRW-1681218054423)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411192926406.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411192926406.png</a>)]</p>
+<h5 id="7、srandmember"><a href="#7、srandmember" class="headerlink" title="7、srandmember"></a>7、srandmember</h5><blockquote>
+<p>格式：SRANDMEMBER key [count]</p>
+<p>功能：返回集合中的 count 个随机元素。count 默认值为 1。</p>
+<p>说明：若 count 为正数，且小于集合长度，那么返回一个包含 count 个元素的数组，数组中的元素各不相同。如果 count 大于等于集合长度，那么返回整个集合。如果count 为负数，那么返回一个包含 count 绝对值个元素的数组，但数组中的元素可能会出现重复。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-fgiGBRJ3-1681218054423)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411193102935.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411193102935.png</a>)]</p>
+<h5 id="8、spop"><a href="#8、spop" class="headerlink" title="8、spop"></a>8、spop</h5><blockquote>
+<p>格式：SPOP key [count]</p>
+<p>功能：移除并返回集合中的 count 个随机元素。count 必须为正数，且默认值为 1。</p>
+<p>说明：如果 count 大于等于集合长度，那么移除并返回整个集合。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-5OJ7lWtL-1681218054424)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411193320299.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411193320299.png</a>)]</p>
+<h5 id="9、sdiff-sdiffstore"><a href="#9、sdiff-sdiffstore" class="headerlink" title="9、sdiff/sdiffstore"></a>9、sdiff/sdiffstore</h5><blockquote>
+<p>格式：SDIFF key [key …] 或 SDIFFSTORE destination key [key …]</p>
+<p>功能：返回第一个集合与其它集合之间的差集。差集，difference。</p>
+<p>说明：这两个命令的不同之处在于，sdiffstore 不仅能够显示差集，还能将差集存储到指定的集合 destination 中。如果 destination 集合已经存在，则将其覆盖。不存在的 key 被视为空集。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-sH710fKh-1681218054425)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411193446264.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411193446264.png</a>)]</p>
+<h5 id="10、sinter-sinterstore"><a href="#10、sinter-sinterstore" class="headerlink" title="10、sinter / sinterstore"></a>10、sinter / sinterstore</h5><blockquote>
+<p>格式：SINTER key [key …] 或 SINTERSTORE destination key [key …]</p>
+<p>功能：返回多个集合间的交集。交集，intersection。</p>
+<p>说明：这两个命令的不同之处在于，sinterstore 不仅能够显示交集，还能将交集存储到指定的集合 destination 中。如果 destination 集合已经存在，则将其覆盖。不存在的 key被视为空集。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-aW2vfO9Z-1681218054425)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411193629443.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411193629443.png</a>)]</p>
+<h5 id="11、sunion-sunionstore"><a href="#11、sunion-sunionstore" class="headerlink" title="11、sunion/sunionstore"></a>11、sunion/sunionstore</h5><blockquote>
+<p>格式：SUNION key [key …] 或 SUNIONSTORE destination key [key …]</p>
+<p>功能：返回多个集合间的并集。并集，union。</p>
+<p>说明：这两个命令的不同之处在于，sunionstore 不仅能够显示并集，还能将并集存储到指定的集合 destination 中。如果 destination 集合已经存在，则将其覆盖。不存在的 key被视为空集。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-OuJUo2Qc-1681218054426)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411193825086.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411193825086.png</a>)]</p>
+<h5 id="12、应用场景"><a href="#12、应用场景" class="headerlink" title="12、应用场景"></a>12、应用场景</h5><h6 id="（1）动态黑名单"><a href="#（1）动态黑名单" class="headerlink" title="（1）动态黑名单"></a>（1）动态黑名单</h6><p>例如某服务器中要设置用于访问控制的黑名单。如果直接将黑名单写入服务器的配置文件，那么存在的问题是，无法动态修改黑名单。此时可以将黑名单直接写入Redis，只要有客户端来访问服务器，服务器在获取到客户端IP 后先从Redis 的黑名单中查看是否存在该IP，如果存在，则拒绝访问，否则访问通过。</p>
+<h6 id="（2）有限随机数"><a href="#（2）有限随机数" class="headerlink" title="（2）有限随机数"></a>（2）有限随机数</h6><p>有限随机数是指返回的随机数是基于某一集合范围内的随机数，例如抽奖、随机选人。通过 spop 或 srandmember 可以实现从指定集合中随机选出元素。</p>
+<h6 id="（3）用户画像"><a href="#（3）用户画像" class="headerlink" title="（3）用户画像"></a>（3）用户画像</h6><p>社交平台、<a target="_blank" rel="noopener" href="https://edu.csdn.net/cloud/pm_summit?utm_source=blogglc&amp;spm=1001.2101.3001.7020">电商</a>平台等各种需要用户注册登录的平台，会根据用户提供的资料与用户使用习惯，为每个用户进行画像，即为每个用户定义很多可以反映该用户特征的标签，这些标签就可以使用sadd 添加到该用户对应的集合中。这些标签具有无序、不重复特征。</p>
+<p>同时平台还可以使用 sinter/sinterstore 根据用户画像间的交集进行好友推荐、商品推荐、客户推荐等。</p>
+<h4 id="七、有序Set型Value操作命令"><a href="#七、有序Set型Value操作命令" class="headerlink" title="七、有序Set型Value操作命令"></a>七、有序Set型Value操作命令</h4><p>Redis 存储数据的Value 可以是一个有序Set，这个有序 Set 中的每个元素均String 类型。有序 Set 与 Set 的不同之处是，有序 Set 中的每一个元素都有一个分值 score，Redis 会根据 score 的值对集合进行由小到大的排序。其与 Set 集合要求相同，元素不能重复，但元素的 score 可以重复。由于该类型的所有命令均是字母z 开头，所以该 Set 也称为 ZSet。</p>
+<h5 id="1、zadd"><a href="#1、zadd" class="headerlink" title="1、zadd"></a>1、zadd</h5><blockquote>
+<p>格式：ZADD key score member [[score member] [score member] …]</p>
+<p>功能：将一个或多个 member 元素及其 score 值加入到有序集 key 中的适当位置。</p>
+<p>说明：score 值可以是整数值或双精度浮点数。如果 key 不存在，则创建一个空的有序集并执行 ZADD 操作。当 key 存在但不是有序集类型时，返回一个错误。如果命令执行成功，则返回被成功添加的新成员的数量，不包括那些被更新的、已经存在的成员。若写入的 member 值已经存在，但score 值不同，则新的 score 值将覆盖老 score。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-6uazNJpi-1681218054426)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411194528792.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411194528792.png</a>)]</p>
+<h5 id="2、zrange-zrevrange"><a href="#2、zrange-zrevrange" class="headerlink" title="2、zrange/zrevrange"></a>2、zrange/zrevrange</h5><blockquote>
+<p>格式：ZRANGE key start stop [WITHSCORES] 或 ZREVRANGE key start stop [WITHSCORES]</p>
+<p>功能：返回有序集 key 中，指定区间内的成员。zrange 命令会按 score 值递增排序， zrevrange 命令会按score 递减排序。具有相同 score 值的成员按字典序/逆字典序排列。可以通过使用 WITHSCORES 选项，来让成员和它的 score 值一并返回。</p>
+<p>说明：下标参数从 0 开始，即 0 表示有序集第一个成员，以 1 表示有序集第二个成员，以此类推。也可以使用负数下标，-1 表示最后一个成员，-2 表示倒数第二个成员，以此类推。超出范围的下标并不会引起错误。例如，当 start 的值比有序集的最大下标还要大，或是 start &gt; stop 时， ZRANGE 命令只是简单地返回一个空列表。再比如 stop 参数的值比有序集的最大下标还要大，那么 Redis 将 stop 当作最大下标来处理。</p>
+<p>若 key 中指定范围内包含大量元素，则该命令可能会阻塞 Redis 服务。所以生产环境中如果要查询有序集合中的所有元素，一般不使用该命令，而使用 zscan 命令代替。</p>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i-blog.csdnimg.cn/blog_migrate/b36c60c1876788811241f57ad1ce00e1.png" alt="image-20230411194713248"></p>
+<h5 id="3、zrangebyscore-zrevrangebyscore"><a href="#3、zrangebyscore-zrevrangebyscore" class="headerlink" title="3、zrangebyscore/zrevrangebyscore"></a>3、zrangebyscore/zrevrangebyscore</h5><blockquote>
+<p>格式：ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count] ZREVRANGEBYSCORE key max min [WITHSCORES] [LIMIT offset count]</p>
+<p>功能：返回有序集 key 中，所有 score 值介于 min 和 max 之间(包括等于 min 或 max )的成员。有序集成员按 score 值递增/递减次序排列。具有相同 score 值的成员按字典序/逆字典序排列。可选的 LIMIT 参数指定返回结果的数量及区间(就像 SQL 中的 SELECT LIMIT offset, count )，注意当 offset 很大时，定位 offset 的操作可能需要遍历整个有序集，此过程效率可能会较低。可选的 WITHSCORES 参数决定结果集是单单返回有序集的成员，还是将有序集成员及其 score 值一起返回。</p>
+<p>说明：min 和 max 的取值是正负无穷大的。默认情况下，区间的取值使用闭区间 (小于等于或大于等于)，也可以通过给参数前增加左括号“(”来使用可选的开区间 (小于或大于)。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-6u0RbrYt-1681218054427)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195027560.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195027560.png</a>)]</p>
+<h5 id="4、zcard"><a href="#4、zcard" class="headerlink" title="4、zcard"></a>4、zcard</h5><blockquote>
+<p>格式：ZCARD key</p>
+<p>功能：返回集合的长度</p>
+<p>说明：当 key 不存在时，返回 0 。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-cfDiABPs-1681218054428)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195150576.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195150576.png</a>)]</p>
+<h5 id="5、zcount"><a href="#5、zcount" class="headerlink" title="5、zcount"></a>5、zcount</h5><blockquote>
+<p>格式：ZCOUNT key min max</p>
+<p>功能：返回有序集 key 中， score 值在 min 和 max 之间(默认包括 score 值等于 min或 max )的成员的数量。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-jJbynJKT-1681218054429)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195252304.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195252304.png</a>)]</p>
+<h5 id="6、zscore"><a href="#6、zscore" class="headerlink" title="6、zscore"></a>6、zscore</h5><blockquote>
+<p>格式：ZSCORE key member</p>
+<p>功能：返回有序集 key 中，成员 member 的 score 值。</p>
+<p>说明：如果 member 元素不是有序集 key 的成员，或 key 不存在，返回 nil 。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-VZ1nmMwt-1681218054429)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195405826.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195405826.png</a>)]</p>
+<h5 id="7、zincrby"><a href="#7、zincrby" class="headerlink" title="7、zincrby"></a>7、zincrby</h5><blockquote>
+<p>格式：ZINCRBY key increment member</p>
+<p>功能：为有序集 key 的成员 member 的 score 值加上增量 increment 。increment 值可以是整数值或双精度浮点数。</p>
+<p>说明：可以通过传递一个负数值 increment ，让 score 减去相应的值。当 key 不存在，或 member 不是 key 的成员时， ZINCRBY key increment member 等同于 ZADD key increment member 。当 key 不是有序集类型时，返回一个错误。命令执行成功，则返回 member 成员的新 score 值。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-j9kPl1xO-1681218054430)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195539936.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195539936.png</a>)]</p>
+<h5 id="8、zrank-zrevrank"><a href="#8、zrank-zrevrank" class="headerlink" title="8、zrank/zrevrank"></a>8、zrank/zrevrank</h5><blockquote>
+<p>格式：ZRANK key member 或 ZREVRANK key member</p>
+<p>功能：返回有序集 key 中成员 member 的排名。zrank 命令会按 score 值递增排序，zrevrank 命令会按 score 递减排序。</p>
+<p>说明：score 值最小的成员排名为 0 。如果 member 不是有序集 key 的成员，返回 nil 。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-P5KtHLr8-1681218054430)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195712685.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195712685.png</a>)]</p>
+<h5 id="9、zrem"><a href="#9、zrem" class="headerlink" title="9、zrem"></a>9、zrem</h5><blockquote>
+<p>格式：ZREM key member [member …]</p>
+<p>功能：移除有序集 key 中的一个或多个成员，不存在的成员将被忽略。</p>
+<p>说明：当 key 存在但不是有序集类型时，返回一个错误。执行成功，则返回被成功移除的成员的数量，不包括被忽略的成员。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-j3z0muca-1681218054431)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195847811.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411195847811.png</a>)]</p>
+<h5 id="10、zremrangebyrank"><a href="#10、zremrangebyrank" class="headerlink" title="10、zremrangebyrank"></a>10、zremrangebyrank</h5><blockquote>
+<p>格式：ZREMRANGEBYRANK key start stop</p>
+<p>功能：移除有序集 key 中，指定排名(rank)区间内的所有成员。</p>
+<p>说明：排名区间分别以下标参数 start 和 stop 指出，包含 start 和 stop 在内。排名区间参数从 0 开始，即 0 表示排名第一的成员， 1 表示排名第二的成员，以此类推。也可以使用负数表示，-1 表示最后一个成员，-2 表示倒数第二个成员，以此类推。命令执行成功，则返回被移除成员的数量。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-Au1pv6wx-1681218054431)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411200011252.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411200011252.png</a>)]</p>
+<h5 id="11、zremrangebyscore"><a href="#11、zremrangebyscore" class="headerlink" title="11、zremrangebyscore"></a>11、zremrangebyscore</h5><blockquote>
+<p>格式：ZREMRANGEBYSCORE key min max</p>
+<p>功能：移除有序集 key 中，所有 score 值介于 min 和 max 之间(包括等于 min 或max )的成员。</p>
+<p>说明：命令执行成功，则返回被移除成员的数量。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-4T9UPuU8-1681218054432)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411200151552.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411200151552.png</a>)]</p>
+<h5 id="12、zrangebylex"><a href="#12、zrangebylex" class="headerlink" title="12、zrangebylex"></a>12、zrangebylex</h5><blockquote>
+<p>格式：ZRANGEBYLEX key min max [LIMIT offset count]</p>
+<p>功能：该命令仅适用于集合中所有成员都具有相同分值的情况。当有序集合的所有成员都具有相同的分值时，有序集合的元素会根据成员的字典序（lexicographical ordering）来进行排序。即这个命令返回给定集合中元素值介于 min 和 max 之间的成员。如果有序集合里面的成员带有不同的分值， 那么命令的执行结果与 zrange key 效果相同。</p>
+<p>说明：合法的 min 和 max 参数必须包含左小括号“(”或左中括号“[”，其中左小括号“(”表示开区间， 而左中括号“[”则表示闭区间。min 或max 也可使用特殊字符“+”和“-”，分别表示正无穷大与负无穷大。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-EPjONsTS-1681218054432)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411205145970.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411205145970.png</a>)]</p>
+<h5 id="13、zlexcount"><a href="#13、zlexcount" class="headerlink" title="13、zlexcount"></a>13、zlexcount</h5><blockquote>
+<p>格式：ZLEXCOUNT key min max</p>
+<p>功能：该命令仅适用于集合中所有成员都具有相同分值的情况。该命令返回该集合中元素值本身（而非score 值）介于 min 和 max 范围内的元素数量。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-8R7cihDj-1681218054433)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411205406092.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411205406092.png</a>)]</p>
+<h5 id="14、zremrangebylex"><a href="#14、zremrangebylex" class="headerlink" title="14、zremrangebylex"></a>14、zremrangebylex</h5><blockquote>
+<p>格式：ZREMRANGEBYLEX key min max</p>
+<p>功能：该命令仅适用于集合中所有成员都具有相同分值的情况。该命令会移除该集合中元素值本身介于 min 和 max 范围内的所有元素。</p>
+</blockquote>
+<p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-IGF4CIPP-1681219975326)(<a target="_blank" rel="noopener" href="https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411205517353.png">https://typora-1259159092.cos.ap-nanjing.myqcloud.com/typora/image-20230411205517353.png</a>)]</p>
+<h5 id="15、应用场景"><a href="#15、应用场景" class="headerlink" title="15、应用场景"></a>15、应用场景</h5><p>有序 Set 最为典型的应用场景就是排行榜，例如音乐、视频平台中根据播放量进行排序的排行榜；电商平台根据用户评价或销售量进行排序的排行榜等。将播放量作为 score，将作品 id 作为 member，将用户评价积分或销售量作为 score，将商家 id 作为member。使用 zincrby 增加排序 score，使用 zrevrange 获取 Top 前几名，使用 zrevrank 查询当前排名，使用 zscore 查询当前排序score 等。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://myj-2024.github.io">宇仔</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://myj-2024.github.io/2024/11/24/Redis%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E9%9B%86%E8%AF%A6%E8%A7%A3/">https://myj-2024.github.io/2024/11/24/Redis%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E9%9B%86%E8%AF%A6%E8%A7%A3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://myj-2024.github.io" target="_blank">宇仔的小破站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Redis/">Redis</a></div><div class="post_share"><div class="social-share" data-image="https://img.picgo.net/2024/12/07/169_1_48fd67f7-3077-434f-8720-69d366a949594245b047d69136ba.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/11/24/Redis%E8%AF%A6%E8%A7%A3/" title="Redis详解"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_3_4932c403-4613-479d-90d1-247a339989d848890e8c90d5363e.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Redis详解</div></div></a></div><div class="next-post pull-right"><a href="/2024/11/24/MySQL%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" title="MySQL常用语法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_3_4932c403-4613-479d-90d1-247a339989d848890e8c90d5363e.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MySQL常用语法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/11/24/Redis%E8%AF%A6%E8%A7%A3/" title="Redis详解"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_3_4932c403-4613-479d-90d1-247a339989d848890e8c90d5363e.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-24</div><div class="title">Redis详解</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">宇仔</div><div class="author-info__description">一个喜欢折腾的小菜鸟</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Myj-2024"><i></i><span>🚀 前往小家...</span><i class="faa-passing animated" style="padding-left:20px;display:inline-block;vertical-align:middle;"><svg class="icon" style="height:28px;width:28px;fill:currentColor;position:relative;top:5px"><use xlink:href="#icon-xiaoqiche"></use></svg></i></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Myj-2024" target="_blank" title="Github"><i class="iconfont icon-github1"></i></a><a class="social-icon" href="mailto:3287456080@qq.com" target="_blank" title="Email"><i class="iconfont icon-youxiang"></i></a></div><div id="welcome-info"></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">宇仔的小破站</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">Redis基础命令详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90Redis01%E3%80%91Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.0.1.</span> <span class="toc-text">【Redis01】Redis常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">一、基础命令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81ping%EF%BC%88%E5%BF%83%E8%B7%B3%E5%91%BD%E4%BB%A4%EF%BC%89"><span class="toc-number">1.0.1.1.1.</span> <span class="toc-text">1、ping（心跳命令）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81get-set%EF%BC%88%E8%AF%BB%E5%86%99%E9%94%AE%E5%80%BC%E5%91%BD%E4%BB%A4%EF%BC%89"><span class="toc-number">1.0.1.1.2.</span> <span class="toc-text">2、get&#x2F;set（读写键值命令）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81select%EF%BC%88%E5%88%87%E6%8D%A2%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%89"><span class="toc-number">1.0.1.1.3.</span> <span class="toc-text">3、select（切换数据库）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81dbsize%EF%BC%88%E6%9F%A5%E7%9C%8Bkey%E6%95%B0%E9%87%8F%EF%BC%89"><span class="toc-number">1.0.1.1.4.</span> <span class="toc-text">4、dbsize（查看key数量）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E3%80%81flushdb%EF%BC%88%E5%88%A0%E9%99%A4%E5%BD%93%E5%89%8D%E5%BA%93%E4%B8%AD%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%EF%BC%89"><span class="toc-number">1.0.1.1.5.</span> <span class="toc-text">5、flushdb（删除当前库中所有数据）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6%E3%80%81flushall%EF%BC%88%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89DB%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%89"><span class="toc-number">1.0.1.1.6.</span> <span class="toc-text">6、flushall（删除所有DB中的数据）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Key-%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">二、Key 相关操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81keys"><span class="toc-number">1.0.1.2.1.</span> <span class="toc-text">1、keys</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81exists"><span class="toc-number">1.0.1.2.2.</span> <span class="toc-text">2、exists</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81del"><span class="toc-number">1.0.1.2.3.</span> <span class="toc-text">3、del</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81rename"><span class="toc-number">1.0.1.2.4.</span> <span class="toc-text">4、rename</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E3%80%81move"><span class="toc-number">1.0.1.2.5.</span> <span class="toc-text">5、move</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6%E3%80%81type"><span class="toc-number">1.0.1.2.6.</span> <span class="toc-text">6、type</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7%E3%80%81expire-pexpire"><span class="toc-number">1.0.1.2.7.</span> <span class="toc-text">7、expire&#x2F;pexpire</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8%E3%80%81ttl-pttl"><span class="toc-number">1.0.1.2.8.</span> <span class="toc-text">8、ttl&#x2F;pttl</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9%E3%80%81persist"><span class="toc-number">1.0.1.2.9.</span> <span class="toc-text">9、persist</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10%E3%80%81randomkey"><span class="toc-number">1.0.1.2.10.</span> <span class="toc-text">10、randomkey</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11%E3%80%81scan"><span class="toc-number">1.0.1.2.11.</span> <span class="toc-text">11、scan</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81String%E5%9E%8BValue%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">三、String型Value操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81set"><span class="toc-number">1.0.1.3.1.</span> <span class="toc-text">1、set</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81setex-psetex"><span class="toc-number">1.0.1.3.2.</span> <span class="toc-text">2、setex&#x2F;psetex</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81setnx"><span class="toc-number">1.0.1.3.3.</span> <span class="toc-text">3、setnx</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81getset"><span class="toc-number">1.0.1.3.4.</span> <span class="toc-text">4、getset</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E3%80%81mset-msetnx"><span class="toc-number">1.0.1.3.5.</span> <span class="toc-text">5、mset&#x2F;msetnx</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6%E3%80%81mget"><span class="toc-number">1.0.1.3.6.</span> <span class="toc-text">6、mget</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7%E3%80%81append"><span class="toc-number">1.0.1.3.7.</span> <span class="toc-text">7、append</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8%E3%80%81incr-decr"><span class="toc-number">1.0.1.3.8.</span> <span class="toc-text">8、incr&#x2F;decr</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9%E3%80%81incrby-decrby"><span class="toc-number">1.0.1.3.9.</span> <span class="toc-text">9、incrby&#x2F;decrby</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10%E3%80%81incrbyfloat"><span class="toc-number">1.0.1.3.10.</span> <span class="toc-text">10、incrbyfloat</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11%E3%80%81strlen"><span class="toc-number">1.0.1.3.11.</span> <span class="toc-text">11、strlen</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12%E3%80%81getrange"><span class="toc-number">1.0.1.3.12.</span> <span class="toc-text">12、getrange</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#13%E3%80%81setrange"><span class="toc-number">1.0.1.3.13.</span> <span class="toc-text">13、setrange</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#14%E3%80%81%E4%BD%8D%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.0.1.3.14.</span> <span class="toc-text">14、位操作命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#15%E3%80%81%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.0.1.3.15.</span> <span class="toc-text">15、典型应用场景</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Hash%E5%9E%8BValue%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.0.1.4.</span> <span class="toc-text">四、Hash型Value操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81hset"><span class="toc-number">1.0.1.4.1.</span> <span class="toc-text">1、hset</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81hget"><span class="toc-number">1.0.1.4.2.</span> <span class="toc-text">2、hget</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81hmset"><span class="toc-number">1.0.1.4.3.</span> <span class="toc-text">3、hmset</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81hmget"><span class="toc-number">1.0.1.4.4.</span> <span class="toc-text">4、hmget</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E3%80%81hgetall"><span class="toc-number">1.0.1.4.5.</span> <span class="toc-text">5、hgetall</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6%E3%80%81hsetnx"><span class="toc-number">1.0.1.4.6.</span> <span class="toc-text">6、hsetnx</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7%E3%80%81hdel"><span class="toc-number">1.0.1.4.7.</span> <span class="toc-text">7、hdel</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8%E3%80%81hexists"><span class="toc-number">1.0.1.4.8.</span> <span class="toc-text">8、hexists</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9%E3%80%81hincrby-hincrbyfloat"><span class="toc-number">1.0.1.4.9.</span> <span class="toc-text">9、hincrby&#x2F;hincrbyfloat</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10%E3%80%81hkeys-hvals"><span class="toc-number">1.0.1.4.10.</span> <span class="toc-text">10、hkeys&#x2F;hvals</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11%E3%80%81hlen"><span class="toc-number">1.0.1.4.11.</span> <span class="toc-text">11、hlen</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12%E3%80%81hstrlen"><span class="toc-number">1.0.1.4.12.</span> <span class="toc-text">12、hstrlen</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#13%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.0.1.4.13.</span> <span class="toc-text">13、应用场景</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E3%80%81List%E5%9E%8BValue%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.0.1.5.</span> <span class="toc-text">五、List型Value操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81lpush-rpush"><span class="toc-number">1.0.1.5.1.</span> <span class="toc-text">1、lpush&#x2F;rpush</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81llen"><span class="toc-number">1.0.1.5.2.</span> <span class="toc-text">2、llen</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81lindex"><span class="toc-number">1.0.1.5.3.</span> <span class="toc-text">3、lindex</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81lset"><span class="toc-number">1.0.1.5.4.</span> <span class="toc-text">4、lset</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E3%80%81lrange"><span class="toc-number">1.0.1.5.5.</span> <span class="toc-text">5、lrange</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6%E3%80%81lpushx-rpushx"><span class="toc-number">1.0.1.5.6.</span> <span class="toc-text">6、lpushx&#x2F;rpushx</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7%E3%80%81linsert"><span class="toc-number">1.0.1.5.7.</span> <span class="toc-text">7、linsert</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8%E3%80%81lpop-rpop"><span class="toc-number">1.0.1.5.8.</span> <span class="toc-text">8、lpop&#x2F;rpop</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9%E3%80%81blpop-brpop"><span class="toc-number">1.0.1.5.9.</span> <span class="toc-text">9、blpop&#x2F;brpop</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10%E3%80%81rpoplpush"><span class="toc-number">1.0.1.5.10.</span> <span class="toc-text">10、rpoplpush</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11%E3%80%81brpoplpush"><span class="toc-number">1.0.1.5.11.</span> <span class="toc-text">11、brpoplpush</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12%E3%80%81lrem"><span class="toc-number">1.0.1.5.12.</span> <span class="toc-text">12、lrem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#13%E3%80%81ltrim"><span class="toc-number">1.0.1.5.13.</span> <span class="toc-text">13、ltrim</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#14%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.0.1.5.14.</span> <span class="toc-text">14、应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E6%A0%88"><span class="toc-number">1.0.1.5.14.1.</span> <span class="toc-text">（1）栈</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E9%98%9F%E5%88%97"><span class="toc-number">1.0.1.5.14.2.</span> <span class="toc-text">（2）队列</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E9%98%BB%E5%A1%9E%E5%BC%8F%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="toc-number">1.0.1.5.14.3.</span> <span class="toc-text">（3）阻塞式消息队列</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E5%8A%A8%E6%80%81%E6%9C%89%E9%99%90%E9%9B%86%E5%90%88"><span class="toc-number">1.0.1.5.14.4.</span> <span class="toc-text">（4）动态有限集合</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AD%E3%80%81Set%E5%9E%8BValue%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.0.1.6.</span> <span class="toc-text">六、Set型Value操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81sadd"><span class="toc-number">1.0.1.6.1.</span> <span class="toc-text">1、sadd</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81smembers"><span class="toc-number">1.0.1.6.2.</span> <span class="toc-text">2、smembers</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81scard"><span class="toc-number">1.0.1.6.3.</span> <span class="toc-text">3、scard</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81sismember"><span class="toc-number">1.0.1.6.4.</span> <span class="toc-text">4、sismember</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E3%80%81smove"><span class="toc-number">1.0.1.6.5.</span> <span class="toc-text">5、smove</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6%E3%80%81srem"><span class="toc-number">1.0.1.6.6.</span> <span class="toc-text">6、srem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7%E3%80%81srandmember"><span class="toc-number">1.0.1.6.7.</span> <span class="toc-text">7、srandmember</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8%E3%80%81spop"><span class="toc-number">1.0.1.6.8.</span> <span class="toc-text">8、spop</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9%E3%80%81sdiff-sdiffstore"><span class="toc-number">1.0.1.6.9.</span> <span class="toc-text">9、sdiff&#x2F;sdiffstore</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10%E3%80%81sinter-sinterstore"><span class="toc-number">1.0.1.6.10.</span> <span class="toc-text">10、sinter &#x2F; sinterstore</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11%E3%80%81sunion-sunionstore"><span class="toc-number">1.0.1.6.11.</span> <span class="toc-text">11、sunion&#x2F;sunionstore</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.0.1.6.12.</span> <span class="toc-text">12、应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%8A%A8%E6%80%81%E9%BB%91%E5%90%8D%E5%8D%95"><span class="toc-number">1.0.1.6.12.1.</span> <span class="toc-text">（1）动态黑名单</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E6%9C%89%E9%99%90%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-number">1.0.1.6.12.2.</span> <span class="toc-text">（2）有限随机数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F"><span class="toc-number">1.0.1.6.12.3.</span> <span class="toc-text">（3）用户画像</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%9C%89%E5%BA%8FSet%E5%9E%8BValue%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.0.1.7.</span> <span class="toc-text">七、有序Set型Value操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81zadd"><span class="toc-number">1.0.1.7.1.</span> <span class="toc-text">1、zadd</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81zrange-zrevrange"><span class="toc-number">1.0.1.7.2.</span> <span class="toc-text">2、zrange&#x2F;zrevrange</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81zrangebyscore-zrevrangebyscore"><span class="toc-number">1.0.1.7.3.</span> <span class="toc-text">3、zrangebyscore&#x2F;zrevrangebyscore</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81zcard"><span class="toc-number">1.0.1.7.4.</span> <span class="toc-text">4、zcard</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E3%80%81zcount"><span class="toc-number">1.0.1.7.5.</span> <span class="toc-text">5、zcount</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6%E3%80%81zscore"><span class="toc-number">1.0.1.7.6.</span> <span class="toc-text">6、zscore</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7%E3%80%81zincrby"><span class="toc-number">1.0.1.7.7.</span> <span class="toc-text">7、zincrby</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8%E3%80%81zrank-zrevrank"><span class="toc-number">1.0.1.7.8.</span> <span class="toc-text">8、zrank&#x2F;zrevrank</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9%E3%80%81zrem"><span class="toc-number">1.0.1.7.9.</span> <span class="toc-text">9、zrem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10%E3%80%81zremrangebyrank"><span class="toc-number">1.0.1.7.10.</span> <span class="toc-text">10、zremrangebyrank</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11%E3%80%81zremrangebyscore"><span class="toc-number">1.0.1.7.11.</span> <span class="toc-text">11、zremrangebyscore</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12%E3%80%81zrangebylex"><span class="toc-number">1.0.1.7.12.</span> <span class="toc-text">12、zrangebylex</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#13%E3%80%81zlexcount"><span class="toc-number">1.0.1.7.13.</span> <span class="toc-text">13、zlexcount</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#14%E3%80%81zremrangebylex"><span class="toc-number">1.0.1.7.14.</span> <span class="toc-text">14、zremrangebylex</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#15%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.0.1.7.15.</span> <span class="toc-text">15、应用场景</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/24/C%E8%AF%AD%E8%A8%80%E7%BB%8F%E5%85%B8100%E4%BE%8B/" title="C语言经典100例"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_e78c8d63-2523-4fdd-b6d7-8f51115119cc5e21607d0201853b.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言经典100例"/></a><div class="content"><a class="title" href="/2024/11/24/C%E8%AF%AD%E8%A8%80%E7%BB%8F%E5%85%B8100%E4%BE%8B/" title="C语言经典100例">C语言经典100例</a><time datetime="2024-11-24T11:47:12.000Z" title="发表于 2024-11-24 19:47:12">2024-11-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/24/Java%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%9550%E9%A2%98/" title="Java经典算法50题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_362c379c-7f50-4a73-a3fc-94eae739c55eeb583824a3a9dc3d.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java经典算法50题"/></a><div class="content"><a class="title" href="/2024/11/24/Java%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%9550%E9%A2%98/" title="Java经典算法50题">Java经典算法50题</a><time datetime="2024-11-24T11:47:12.000Z" title="发表于 2024-11-24 19:47:12">2024-11-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/24/MySQL/" title="MySQL"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_3_convert.io_1b1a0b531dd8e5437.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL"/></a><div class="content"><a class="title" href="/2024/11/24/MySQL/" title="MySQL">MySQL</a><time datetime="2024-11-24T11:47:12.000Z" title="发表于 2024-11-24 19:47:12">2024-11-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/24/MySQL%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" title="MySQL常用语法"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_3_4932c403-4613-479d-90d1-247a339989d848890e8c90d5363e.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL常用语法"/></a><div class="content"><a class="title" href="/2024/11/24/MySQL%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" title="MySQL常用语法">MySQL常用语法</a><time datetime="2024-11-24T11:47:12.000Z" title="发表于 2024-11-24 19:47:12">2024-11-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/24/Redis%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E9%9B%86%E8%AF%A6%E8%A7%A3/" title="Redis基础命令详解"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_48fd67f7-3077-434f-8720-69d366a949594245b047d69136ba.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis基础命令详解"/></a><div class="content"><a class="title" href="/2024/11/24/Redis%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E9%9B%86%E8%AF%A6%E8%A7%A3/" title="Redis基础命令详解">Redis基础命令详解</a><time datetime="2024-11-24T11:47:12.000Z" title="发表于 2024-11-24 19:47:12">2024-11-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>再看看那个光点，它就在这里，这是家园，这是我们 —— 你所爱的每一个人，你认识的一个人，你听说过的每一个人，曾经有过的每一个人，都在它上面度过他们的一生✨</div><div class="btn-xz-box"><a class="btn-xz" target="_blank" rel="noopener" href="https://stellarium.org/">点击开启星辰之旅</a></div></div></div><div class="t-t-r"><p class="ft-t t-l-t">猜你想看💡</p><ul class="ft-links"><li><a href="/posts/eec9786.html">魔改指南</a><a href="/box/nav/">网址导航</a></li><li><a href="/social/link/">我的朋友</a><a href="/comments/">留点什么</a></li><li><a href="/personal/about/">关于作者</a><a href="/archives/">文章归档</a></li><li><a href="/categories/">文章分类</a><a href="/tags/">文章标签</a></li><li><a href="/box/Gallery/">我的画廊</a><a href="/personal/bb/">我的唠叨</a></li><li><a href="/site/time/">建设进程</a><a href="/site/census/">网站统计</a></li></ul></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a target="_blank" rel="noopener" href="https://stackoverflow.com/" title="stackoverflow"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a" alt=""/></a></div></div></div></div><div class="copyright"><span><b>&copy;2024 - 2025</b></span><span><b>&nbsp;&nbsp;By 宇仔</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.</div><div id="workboard"></div><p id="ghbdages"></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><button class="share" type="button" title="分享链接" onclick="share()"><i class="fas fa-share-nodes"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i><span id="percent">0<span>%</span></span></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i><span id="percent">0<span>%</span></span></button><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.min.js"></script><script src="/js/instantpage.js" type="module"></script><script src="/js/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.8.0/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-liard-zeta.vercel.app',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-liard-zeta.vercel.app',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdn.staticfile.org/twikoo/1.6.8/twikoo.all.min.js').then(init)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script defer src="/js/custom.js"></script><script defer src="/js/cursor.js"></script><script async src="//at.alicdn.com/t/font_2264842_b004iy0kk2b.js"></script><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer data-pjax src="/js/readPercent.js"></script><script defer data-pjax src="/js/emoji.js"></script><script async src="https://cdn1.tianli0.top/npm/vue@2.6.14/dist/vue.min.js"></script><script async src="https://cdn1.tianli0.top/npm/element-ui@2.15.6/lib/index.js"></script><script src="/js/share.js"></script><script src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"></script><script async data-pjax src="/js/txmap.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/runtime.js"></script><script async src="/js/console.js"></script><script async src="/js/title.js"></script><script id="canvas_nest" defer="defer" color="255,255,255" opacity="0.5" zIndex="-1" count="99" mobile="false" src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/canvas-nest.min.js"></script><script id="click-heart" src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/click-heart.min.js" async="async" mobile="true"></script><script>(() => {
+  window.$crisp = [];
+  window.CRISP_WEBSITE_ID = "a5ca0a84-595c-43f4-9bef-b5451d3b9034";
+  (function () {
+    d = document;
+    s = d.createElement("script");
+    s.src = "https://client.crisp.chat/l.js";
+    s.async = 1;
+    d.getElementsByTagName("head")[0].appendChild(s);
+  })();
+  $crisp.push(["safe", true])
+
+  const isChatBtn = true
+  const isChatHideShow = false
+
+  if (isChatBtn) {
+    const open = () => {
+      $crisp.push(["do", "chat:show"])
+      $crisp.push(["do", "chat:open"])
+    }
+
+    const close = () => {
+      $crisp.push(["do", "chat:hide"])
+    }
+
+    close()
+    $crisp.push(["on", "chat:closed", function() {
+      close()
+    }])
+
+    window.chatBtnFn = () => {
+      $crisp.is("chat:visible") ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        $crisp.push(["do", "chat:hide"])
+      },
+      show: () => {
+        $crisp.push(["do", "chat:show"])
+      }
+    }
+  }
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://myj-2024.github.io/categories/C语言/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🐱 C语言学习 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://myj-2024.github.io/categories/Linux/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💻 Linux学习 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  href="https://myj-2024.github.io/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = '7c79949b31294dd285d11a9eb20e4285';
+  var gaud_map_key = 'cd260338dac57269871d2f5c00673f30';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/linux常用命令大全/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/1imagbcc9e693e5fdc3d8.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/linux常用命令大全/" alt="">Linux常用命令</a><div class="blog-slider__text">Linux常用命令</div><a class="blog-slider__button" href="2024/11/24/linux常用命令大全/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/Redis基础命令集详解/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_48fd67f7-3077-434f-8720-69d366a949594245b047d69136ba.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/Redis基础命令集详解/" alt="">Redis基础命令详解</a><div class="blog-slider__text">Redis基础命令详解</div><a class="blog-slider__button" href="2024/11/24/Redis基础命令集详解/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/Redis详解/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_3_4932c403-4613-479d-90d1-247a339989d848890e8c90d5363e.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/Redis详解/" alt="">Redis详解</a><div class="blog-slider__text">Redis详解</div><a class="blog-slider__button" href="2024/11/24/Redis详解/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/MySQL常用语法/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_3_4932c403-4613-479d-90d1-247a339989d848890e8c90d5363e.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/MySQL常用语法/" alt="">MySQL常用语法</a><div class="blog-slider__text">MySQL常用语法</div><a class="blog-slider__button" href="2024/11/24/MySQL常用语法/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/MySQL/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_3_convert.io_1b1a0b531dd8e5437.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/MySQL/" alt="">MySQL</a><div class="blog-slider__text">MySQL</div><a class="blog-slider__button" href="2024/11/24/MySQL/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/Java经典算法50题/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_362c379c-7f50-4a73-a3fc-94eae739c55eeb583824a3a9dc3d.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/Java经典算法50题/" alt="">Java经典算法50题</a><div class="blog-slider__text">Java经典算法50题</div><a class="blog-slider__button" href="2024/11/24/Java经典算法50题/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024/11/24/C语言经典100例/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/12/07/169_1_e78c8d63-2523-4fdd-b6d7-8f51115119cc5e21607d0201853b.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-11-24</span><a class="blog-slider__title" href="2024/11/24/C语言经典100例/" alt="">C语言经典100例</a><div class="blog-slider__text">C语言经典100例</div><a class="blog-slider__button" href="2024/11/24/C语言经典100例/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '700ms');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --></body></html>
